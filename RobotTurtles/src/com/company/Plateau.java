@@ -1,6 +1,6 @@
 package com.company;
 
-public class Plateau {
+public class Plateau{
 
     private char [][] plateau;
     private int taillePlateau = 8; //Le plateau est carré

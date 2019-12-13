@@ -1,6 +1,6 @@
 package com.company;
 
-public class Tortue {
+public class Tortue{
 
     private String color;
     private int[] position; //tableau à deux entiers donnant l'abscisse et l'ordonnnée de la tortue sur le plateau
