@@ -28,7 +28,6 @@ public class Jeu{ // en fonction du nombre de joueur saisi dans la classe Menu, 
 
     public void twoPlayers(){ //algorthme principal du jeu pour deux joueurs
         System.out.println(" 2 joueurs");
-
         }
 
     public void treePlayers(){ //algorthme principal du jeu pour trois joueurs
