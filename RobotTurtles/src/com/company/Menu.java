@@ -19,6 +19,7 @@ public class Menu { //Dans cette classe, on choisit le nombre de joueur et quand
 
     public void display(){ //affiche le menu
         Scanner scanner = new Scanner(System.in);
+
         System.out.println("Bonjour et bienvenue dans le jeu Robot Turtles ! \n" +
                 "\n" +
                 "Saississez le nombre de joueur (entre 2 et 4) : ");
@@ -30,7 +31,8 @@ public class Menu { //Dans cette classe, on choisit le nombre de joueur et quand
             choix = scanner.nextInt();
         }
 
-        Jeu jeu = new Jeu(choix);
+
+        Jeu jeu = new Jeu(choix);//on démarre un jeu en fonction du choix de l'utilisateur
         jeu.play();
 
 

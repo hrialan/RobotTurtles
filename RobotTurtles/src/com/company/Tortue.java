@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.ArrayDeque;
+
 public class Tortue{
 
     private String color;
@@ -17,9 +19,33 @@ public class Tortue{
 
     public void origin(){
         this.position[0] = 0;
-        this.position[1] = 1;
+        this.position[1] = 0;
         this.direction = 'N';
     }
+
+    public boolean changePosition(int x, int y){
+        if(x >= 0 & x < 8 & y >= 0 & y < 8) { // on vérifie que l'on ne sort  pas du tableau
+            this.position[0] = x;
+            this.position[1] = y;
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public boolean changeDirection(char direction){
+
+        if(direction != 'N' & direction != 'S' & direction != 'E' & direction != 'O') {
+            this.direction = direction;
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+
 
 
 }
