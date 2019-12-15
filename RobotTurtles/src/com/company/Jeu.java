@@ -28,14 +28,32 @@ public class Jeu{ // en fonction du nombre de joueur saisi dans la classe Menu, 
 
     public void twoPlayers(){ //algorthme principal du jeu pour deux joueurs
         System.out.println(" 2 joueurs");
+
+        Plateau plateau = new Plateau();
+        plateau.initialisation2Joueur();
+        plateau.display();
+
+        Joueur[] joueurs = new Joueur[nbJoueurs];
+
+        for(int i = 0; i<nbJoueurs; i++){
+            Joueur joueur = new Joueur();
+            joueurs[i] = joueur;
+        }
+
         }
 
     public void treePlayers(){ //algorthme principal du jeu pour trois joueurs
         System.out.println(" 3 joueurs");
+        Plateau plateau = new Plateau();
+        plateau.initialisation3Joueur();
+        plateau.display();
         }
 
     public void fourPlayers(){ //algorthme principal du jeu pour quatre joueurs
         System.out.println(" 4 joueurs");
+        Plateau plateau = new Plateau();
+        plateau.initialisation4Joueur();
+        plateau.display();
         }
 
 

@@ -1,6 +1,6 @@
 package com.company;
 
-public class Tortue extends Joueur{
+public class Tortue{
 
     private String color;
     private int[] position; //tableau à deux entiers donnant l'abscisse et l'ordonnnée de la tortue sur le plateau
@@ -10,12 +10,15 @@ public class Tortue extends Joueur{
         this.position = new int[2];
     }
 
+
     public String getColor(){return this.color;}
+
     public void setColor(String color){this.color = color;}
 
     public void origin(){
         this.position[0] = 0;
         this.position[1] = 1;
+        this.direction = 'N';
     }
 
 

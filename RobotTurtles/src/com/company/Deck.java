@@ -38,7 +38,7 @@ public class Deck {
     }
 
     public Carte getLastCard(){ //renvoie et retire la dernière carte du deck
-        return deck.remove(0);
+        return this.deck.remove(0);
     }
 
 
