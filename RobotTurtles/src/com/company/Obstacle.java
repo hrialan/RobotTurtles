@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 
 public class Obstacle {
@@ -22,5 +23,21 @@ public class Obstacle {
         }
     }
 
+    public Carte getCardByName(String name){
+        for(Carte elt : murs){
+            if(name.equals(elt.getName())){
+                return elt;
+            }
+        }
+        return null;
+    }
 
+
+    public boolean removePierre(){
+        return murs.remove(getCardByName("Mur en pierre")); // a verifier le cas null if(getCardByName("Mur en pierre") == null) => plus de carte 
+    }
+
+    public boolean removeGlace(){
+        return murs.remove(getCardByName("Mur en glace"));
+    }
 }
