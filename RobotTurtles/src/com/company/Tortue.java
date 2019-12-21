@@ -35,7 +35,6 @@ public class Tortue{
     }
 
     public boolean setDirection(char direction){
-
         if(direction != 'N' & direction != 'S' & direction != 'E' & direction != 'O') {
             return false;
         }
@@ -43,6 +42,10 @@ public class Tortue{
             this.direction = direction;
             return true;
         }
+    }
+
+    public void setPositionDirection(char instruction){
+
     }
 
 }
