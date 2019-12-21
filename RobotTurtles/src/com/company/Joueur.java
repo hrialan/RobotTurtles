@@ -13,18 +13,19 @@ public class Joueur extends Tortue{
 
 
     public Joueur(){
+        super();
         this.deck = new Deck();
         this.obstacle = new Obstacle();
         this.main = new ArrayDeque<>();
     }
 
 
-    public String getLastCard(){
-        return deck.getLastCard().getName();
-    }
+
+    public Carte getLastCard(){return deck.getLastCard();}
 
     public ArrayDeque<String> creationFile(ArrayDeque<Carte> main){
         ArrayDeque<String> file = new ArrayDeque<>();
+
         /*
         Déclarer une nouvelle file ;
 — Demander à l’utilisateur de saisir une instruction parmi les trois suivantes :
@@ -35,25 +36,21 @@ public class Joueur extends Tortue{
 de 5.
 — Retourner la file.
          */
+
         return file;
     }
 
 
     public void deplacement(ArrayDeque<String> instructions){
-        int x=-1;
-        int y=-1;
-        char direction=' ';
+
 /*
 rendre en paramètre la file d’instructions retournée par la fonction creationFile() ;
 — En suivant le principe FIFO d’une file, mettre à jour les variables globales position
 et direction.
 — Attention, si une instruction fait sortir le pion du plateau, alors celle-ci est retirée de
 la file sans être prise en compte.
-
  */
 
-changePosition(x,y);
-changeDirection(direction);
     }
 
 

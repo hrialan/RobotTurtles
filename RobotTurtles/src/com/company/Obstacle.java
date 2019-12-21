@@ -34,10 +34,20 @@ public class Obstacle {
 
 
     public boolean removePierre(){
-        return murs.remove(getCardByName("Mur en pierre")); // a verifier le cas null if(getCardByName("Mur en pierre") == null) => plus de carte 
+        if(getCardByName("Mur en pierre") == null ){
+            return false;
+        }
+        else {
+            return murs.remove(getCardByName("Mur en pierre"));
+        }
     }
 
     public boolean removeGlace(){
-        return murs.remove(getCardByName("Mur en glace"));
+        if(getCardByName("Mur en glace") == null ){
+            return false;
+        }
+        else {
+            return murs.remove(getCardByName("Mur en glace"));
+        }
     }
 }

@@ -4,10 +4,16 @@ public class Plateau{
 
     private String [][] plateau;
     private int taillePlateau = 8; //Le plateau est carré
+    private int nbJoueur;
+
 
 
     public Plateau(){
+    }
+
+    public Plateau(int nbJoueur){
         this.plateau = new String[taillePlateau][taillePlateau];
+        this.nbJoueur = nbJoueur ;
     }
 
     public int taille(){
@@ -26,40 +32,38 @@ public class Plateau{
         }
     }
 
-
-
-    public void initialisation2Joueur(){
-        for (int L = 0; L < this.taillePlateau; L++) {
-            for (int C = 0; C < this.taillePlateau - 1; C++) {
-                plateau[L][C] = " ";
-            }
-        }
-        for (int L = 0; L < this.taillePlateau; L++) {
-            plateau[L][this.taillePlateau-1] = "Mur en pierre";
-        }
-
-    }
-
-    public void initialisation3Joueur(){
-        for (int L = 0; L < this.taillePlateau; L++) {
-            for (int C = 0; C < this.taillePlateau - 1; C++) {
-                plateau[L][C] = " ";
-            }
-        }
-        for (int L = 0; L < this.taillePlateau; L++) {
-            plateau[L][this.taillePlateau-1] = "Mur en pierre";
-        }
-    }
-
-    public void initialisation4Joueur(){
+    public void initialisation() {
         for (int L = 0; L < this.taillePlateau; L++) {
             for (int C = 0; C < this.taillePlateau; C++) {
                 plateau[L][C] = " ";
             }
         }
+        if (nbJoueur < 4) { //si nbJoueur < 4 , on réduit le plateau avec des murs en pierre
+
+            for (int L = 0; L < this.taillePlateau; L++) {
+                plateau[L][this.taillePlateau - 1] = "Mur en pierre";
+            }
+        }
     }
 
-    public void refresh(){ //raffraichit le plateau en  fonction de la position des joyaux et tortues
+    public void setPosition(Joueur joueur){
+        int[] position = joueur.position;
+        char direction = joueur.direction;
+        plateau[position[0]][position[1]] = joueur.getColor() + direction;
 
+    }
+
+
+    public void cleanPosition(int[] position){
+        plateau[position[0]][position[1]] = " ";
+    }
+
+    public boolean isPositionClear(int[] position){
+        if(plateau[position[0]][position[1]].equals(" ")){
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }

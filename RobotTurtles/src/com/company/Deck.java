@@ -30,7 +30,6 @@ public class Deck {
         Collections.shuffle(this.deck); //on mélange les cartes
     }
 
-
     public void getDeck(){
         for(Carte carte : this.deck){
             System.out.print(carte.getName() + " ");

@@ -4,9 +4,9 @@ import java.util.ArrayDeque;
 
 public class Tortue{
 
-    private String color;
-    private int[] position; //tableau à deux entiers donnant l'abscisse et l'ordonnnée de la tortue sur le plateau
-    private char direction; // nord, sud, est, ouest
+    protected String color;
+    protected int[] position; //tableau à deux entiers donnant l'abscisse et l'ordonnnée de la tortue sur le plateau
+    protected char direction; // nord, sud, est, ouest
 
     public Tortue(){
         this.position = new int[2];
@@ -23,7 +23,7 @@ public class Tortue{
         this.direction = 'N';
     }
 
-    public boolean changePosition(int x, int y){
+    public boolean setPosition(int x, int y){
         if(x >= 0 & x < 8 & y >= 0 & y < 8) { // on vérifie que l'on ne sort  pas du tableau
             this.position[0] = x;
             this.position[1] = y;
@@ -34,18 +34,15 @@ public class Tortue{
         }
     }
 
-    public boolean changeDirection(char direction){
+    public boolean setDirection(char direction){
 
         if(direction != 'N' & direction != 'S' & direction != 'E' & direction != 'O') {
+            return false;
+        }
+        else {
             this.direction = direction;
             return true;
         }
-        else {
-            return false;
-        }
     }
-
-
-
 
 }
