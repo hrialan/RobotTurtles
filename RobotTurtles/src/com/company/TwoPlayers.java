@@ -28,6 +28,17 @@ public class TwoPlayers {
         plateau.initialisation();
         plateau.setPosition(joueurs[0]);
         plateau.setPosition(joueurs[1]);
+        plateau.setJoyau("JV",7,3);
         plateau.display();
+
+
+        for(Joueur joueur : joueurs){ // on remplit la main
+            while (joueur.sizeMain() < 5){
+                joueur.addMain(joueur.getLastCard());
+            }
+        }
+        
+
+
     }
 }

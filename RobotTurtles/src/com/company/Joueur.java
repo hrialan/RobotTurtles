@@ -20,6 +20,13 @@ public class Joueur extends Tortue{
     }
 
 
+    public int sizeMain(){
+        return main.size();
+    }
+
+    public void addMain(Carte carte){
+        main.add(carte);
+    }
 
     public Carte getLastCard(){return deck.getLastCard();}
 

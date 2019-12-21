@@ -53,6 +53,10 @@ public class Plateau{
 
     }
 
+    public void setJoyau(String name,int x, int y){
+        plateau[x][y] = name;
+    }
+
 
     public void cleanPosition(int[] position){
         plateau[position[0]][position[1]] = " ";
