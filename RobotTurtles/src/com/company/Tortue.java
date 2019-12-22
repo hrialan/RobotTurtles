@@ -45,7 +45,53 @@ public class Tortue{
     }
 
     public void setPositionDirection(char instruction){
+        /*met à jour les variables globales de position et de direction en fonction des caractères A, G, D
+        */
+        char[] directions = {'N','E','S','O'};
 
+        switch (instruction){
+            case 'A': //on avance en prenant en compte la direction
+
+                switch (this.direction){
+                    case 'N':
+                        setPosition(position[0]-1,position[1]);
+                        break;
+                    case 'E':
+                        setPosition(position[0],position[1]+1);
+                        break;
+                    case 'S':
+                        setPosition(position[0]+1,position[1]);
+                        break;
+                    case 'O':
+                        setPosition(position[0],position[1]-1);
+                        break;
+                }
+                break;
+
+            case 'G':
+                for(int i =0 ; i<directions.length; i++){
+                    if(directions[i] == direction){
+                        setDirection(directions[(i-1)%directions.length]);
+                    }
+                }
+                break;
+
+            case 'D':
+                for(int i =0 ; i<directions.length; i++){
+                    if(directions[i] == direction){
+                        setDirection(directions[(i+1)%directions.length]);
+                    }
+                }
+                break;
+
+            case 'L':
+
+                break;
+
+            default:
+                System.out.println("Saisie invalide ! ");
+                break;
+        }
     }
 
 }

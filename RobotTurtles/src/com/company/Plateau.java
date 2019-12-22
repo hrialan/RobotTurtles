@@ -46,10 +46,13 @@ public class Plateau{
         }
     }
 
-    public void setPosition(Joueur joueur){
+    public void set(Joueur joueur){
         int[] position = joueur.position;
         char direction = joueur.direction;
-        plateau[position[0]][position[1]] = joueur.getColor() + direction;
+        if(plateau[position[0]][position[1]].equals(" ")){
+            plateau[position[0]][position[1]] = joueur.getColor() + direction;
+        }
+
 
     }
 

@@ -26,8 +26,8 @@ public class TwoPlayers {
 
         Plateau plateau = new Plateau(this.nbJoueurs);
         plateau.initialisation();
-        plateau.setPosition(joueurs[0]);
-        plateau.setPosition(joueurs[1]);
+        plateau.set(joueurs[0]);
+        plateau.set(joueurs[1]);
         plateau.setJoyau("JV",7,3);
         plateau.display();
 
