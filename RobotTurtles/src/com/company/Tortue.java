@@ -84,9 +84,6 @@ public class Tortue{
                 }
                 break;
 
-            case 'L':
-
-                break;
 
             default:
                 System.out.println("Saisie invalide ! ");

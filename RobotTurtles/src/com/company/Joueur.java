@@ -24,11 +24,25 @@ public class Joueur extends Tortue{
         return main.size();
     }
 
-    public void addMain(Carte carte){
-        main.add(carte);
-    }
 
     public Carte getLastCard(){return deck.getLastCard();}
+    public void addInstructions(Carte carte){instructions.addLast(carte);};
+    public Carte getMain(int indice){return main.remove(indice);}
+    public ArrayDeque<Carte> getInstructions(){return this.instructions;}
+
+    public void printMain(){
+        for (Carte carte : main){
+            System.out.print(carte.getName() + " ");
+        }
+        System.out.println();
+    };
+
+    public void remplirMain(){
+        while(main.size()<5){
+            main.add(deck.getLastCard());
+        }
+    }
+
 
     public ArrayDeque<Character> creationFile(ArrayDeque<Carte> instructions){ //simplification de la pile instruction avec des caractères
         ArrayDeque<Character> file = new ArrayDeque<>();
