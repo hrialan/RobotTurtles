@@ -1,7 +1,4 @@
 package com.company;
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.SlickException;
-import org.newdawn.slick.state.StateBasedGame;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -10,24 +7,16 @@ import java.io.File;
 import java.io.IOException;
 
 
-public class Main extends StateBasedGame
+public class Main
 {
 
-    public Main(String name)
-    {
-        super(name);
-    }
-
-    public void initStatesList(GameContainer gc) throws SlickException
-    {
-
-    }
 
     public static void main(String[] args) {
         // write your code here
 
         Menu menu = new Menu();
         menu.display();
+
         JFrame f = new JFrame("Robot Turtles");
         f.setSize(3000,1000);
         JPanel plateau = new JPanel();
@@ -48,6 +37,5 @@ public class Main extends StateBasedGame
 
 
 
-    Main jeu = new Main("Robot turtles");
     }
 
