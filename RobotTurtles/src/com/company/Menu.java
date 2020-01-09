@@ -24,14 +24,13 @@ public class Menu { //Dans cette classe, on choisit le nombre de joueur et quand
 
     public void display(){ //affiche le menu
         JFrame fenetre = new JFrame();
-        JPanel pan = new JPanel();
 
         fenetre.setTitle("Ma première fenêtre Java");
-        fenetre.setSize(400, 500);
-        fenetre.setLocation(50,200);
+        fenetre.setSize(620, 802);
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        fenetre.setLocation(dim.width/4 - fenetre.getWidth()/2, dim.height/2 - fenetre.getHeight()/2);
         fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        fenetre.setContentPane(pan);
+        fenetre.setContentPane(new PanneauMenu());
         fenetre.setVisible(true);
 
         int choix = - 1;
