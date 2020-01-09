@@ -1,11 +1,17 @@
 package com.company;
 
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Menu { //Dans cette classe, on choisit le nombre de joueur et quand on démarre le jeu
 
 
     private int nbJoueurs ;
+
 
     public Menu(){
     }
@@ -17,18 +23,18 @@ public class Menu { //Dans cette classe, on choisit le nombre de joueur et quand
 
 
     public void display(){ //affiche le menu
-        Scanner scanner = new Scanner(System.in);
+        JFrame fenetre = new JFrame();
+        JPanel pan = new JPanel();
 
-        System.out.println("Bonjour et bienvenue dans le jeu Robot Turtles ! \n" +
-                "\n" +
-                "Saississez le nombre de joueur (entre 2 et 4) : ");
+        fenetre.setTitle("Ma première fenêtre Java");
+        fenetre.setSize(400, 500);
+        fenetre.setLocation(50,200);
+        fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        int choix = scanner.nextInt();
+        fenetre.setContentPane(pan);
+        fenetre.setVisible(true);
 
-        while(choix != 2 & choix != 3 & choix != 4){ //detection des erreurs d'entrées utilisateur
-            System.out.println("Saissisez un nombre de joueur valide (entre 2 et 4) : ");
-            choix = scanner.nextInt();
-        }
+        int choix = - 1;
 
         switch (choix){
             case 2:
