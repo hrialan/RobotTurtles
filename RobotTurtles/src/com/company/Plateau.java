@@ -1,6 +1,9 @@
 package com.company;
 
-public class Plateau{
+import javax.swing.*;
+import java.awt.*;
+
+public class Plateau extends JPanel {
 
     private String [][] plateau;
     private int taillePlateau = 8; //Le plateau est carré
@@ -9,6 +12,12 @@ public class Plateau{
 
 
     public Plateau(){
+    }
+
+    public void paintComponent(Graphics g) {
+        int x[] = {20, 30, 50, 60, 50, 30};
+        int y[] = {40, 20, 20, 40, 60, 60};
+        g.drawPolygon(x, y, 6);
     }
 
     public Plateau(int nbJoueur){
