@@ -1,12 +1,9 @@
 package com.company;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.IOException;
 
 
 public class Menu { //Dans cette classe, on choisit le nombre de joueur et quand on démarre le jeu
@@ -29,13 +26,13 @@ public class Menu { //Dans cette classe, on choisit le nombre de joueur et quand
 
     public void display() { //affiche le menu
 
-        fenetre.setTitle("Ma première fenêtre Java");
+        fenetre.setTitle("RobotTurtles");
         fenetre.setSize(620, 802);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         fenetre.setLocation(dim.width / 4 - fenetre.getWidth() / 2, dim.height / 2 - fenetre.getHeight() / 2);
         fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         fenetre.setResizable(false);
-        JPanelBackroud container = new JPanelBackroud("images/MenuBackground.jpg");
+        JPanelBackround container = new JPanelBackround("images/MenuBackground.jpg");
         container.setLayout(null);
 
 
@@ -53,9 +50,6 @@ public class Menu { //Dans cette classe, on choisit le nombre de joueur et quand
 
         fenetre.setContentPane(container);
         fenetre.setVisible(true);
-
-
-
     }
 
         class Bouton2Listener implements ActionListener {
@@ -66,7 +60,6 @@ public class Menu { //Dans cette classe, on choisit le nombre de joueur et quand
 
             }
         }
-
 
         class Bouton3Listener implements ActionListener {
             public void actionPerformed(ActionEvent e) {

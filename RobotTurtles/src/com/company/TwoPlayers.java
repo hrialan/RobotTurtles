@@ -1,21 +1,28 @@
 package com.company;
 
-import java.util.ArrayDeque;
-import java.util.Collections;
-import java.util.Scanner;
+
+import javax.swing.*;
+import java.awt.*;
 
 public class TwoPlayers{
 
-    int nbJoueurs = 2;
+    private JFrame fenetrePlateau = new JFrame();
 
     public TwoPlayers(){
     }
 
     public void play(){
-        Scanner scanner = new Scanner(System.in);
+        int nbJoueurs = 2;
 
-        System.out.println(" 2 joueurs : ");
-        System.out.println();
+        fenetrePlateau.setTitle("Plateau");
+        fenetrePlateau.setSize(400, 500);
+        fenetrePlateau.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        fenetrePlateau.setSize(dim.width/2, dim.height);
+        fenetrePlateau.setLocation(0,0);
+        fenetrePlateau.setResizable(false);
+        fenetrePlateau.setVisible(true);
+
         Joueur[] joueurs = new Joueur[nbJoueurs];
         String[] couleursTortues = {"Rouge", "Vert"};
 
@@ -40,7 +47,7 @@ public class TwoPlayers{
         System.out.println();
         System.out.println();
 
-        Plateau plateau = new Plateau(this.nbJoueurs);
+        Plateau plateau = new Plateau(nbJoueurs);
         plateau.initialisation();
         plateau.set(joueurs[0]);
         plateau.set(joueurs[1]);

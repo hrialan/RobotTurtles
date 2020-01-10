@@ -6,10 +6,10 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
-public class JPanelBackroud extends JPanel {
+public class JPanelBackround extends JPanel {
     private String source;
 
-    public JPanelBackroud(String source){
+    public JPanelBackround(String source){
         this.source = source;
     }
 
