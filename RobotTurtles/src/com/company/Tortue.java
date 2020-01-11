@@ -24,7 +24,7 @@ public class Tortue{
     }
 
     public boolean setPosition(int x, int y){
-        if(x >= 0 & x < 8 & y >= 0 & y < 8) { // on vérifie que l'on ne sort  pas du tableau
+        if(x >= 0 && x < 8 && y >= 0 && y < 8) { // on vérifie que l'on ne sort  pas du tableau
             this.position[0] = x;
             this.position[1] = y;
             return true;
@@ -35,7 +35,7 @@ public class Tortue{
     }
 
     public boolean setDirection(char direction){
-        if(direction != 'N' & direction != 'S' & direction != 'E' & direction != 'O') {
+        if(direction != 'N' && direction != 'S' && direction != 'E' && direction != 'O') {
             return false;
         }
         else {
@@ -44,7 +44,7 @@ public class Tortue{
         }
     }
 
-    public void setPositionDirection(char instruction){
+    public void setPositionDirection(char instruction,Plateau plateau){
         /*met à jour les variables globales de position et de direction en fonction des caractères A, G, D
         */
         char[] directions = {'N','E','S','O'};
@@ -54,16 +54,24 @@ public class Tortue{
 
                 switch (this.direction){
                     case 'N':
-                        setPosition(position[0]-1,position[1]);
+                        if (plateau.isPositionClear(position[0] - 1, position[1])) {
+                            setPosition(position[0] - 1, position[1]);
+                        }
                         break;
                     case 'E':
-                        setPosition(position[0],position[1]+1);
+                        if (plateau.isPositionClear(position[0], position[1]+1)) {
+                            setPosition(position[0], position[1] + 1);
+                        }
                         break;
                     case 'S':
-                        setPosition(position[0]+1,position[1]);
+                        if (plateau.isPositionClear(position[0] + 1, position[1])) {
+                            setPosition(position[0] + 1, position[1]);
+                        }
                         break;
                     case 'O':
-                        setPosition(position[0],position[1]-1);
+                        if (plateau.isPositionClear(position[0] , position[1] - 1)) {
+                            setPosition(position[0], position[1] - 1);
+                        }
                         break;
                 }
                 break;
@@ -71,7 +79,8 @@ public class Tortue{
             case 'G':
                 for(int i =0 ; i<directions.length; i++){
                     if(directions[i] == direction){
-                        setDirection(directions[(i-1)%directions.length]);
+                        int a =(((i-1 % directions.length) + directions.length) % directions.length); //subtilité du modulo négatif en java
+                        setDirection(directions[a]);
                     }
                 }
                 break;
@@ -90,5 +99,6 @@ public class Tortue{
                 break;
         }
     }
+
 
 }

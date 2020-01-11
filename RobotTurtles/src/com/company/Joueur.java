@@ -47,6 +47,7 @@ public class Joueur extends Tortue{
     public ArrayDeque<Character> creationFile(ArrayDeque<Carte> instructions){ //simplification de la pile instruction avec des caractères
         ArrayDeque<Character> file = new ArrayDeque<>();
         Carte carte;
+
         while (instructions.size() > 0){
             carte = instructions.getLast();
 
@@ -69,9 +70,9 @@ public class Joueur extends Tortue{
         return file;
     }
 
-    public void deplacement(ArrayDeque<Character> file){ //prend en paramètre la file d’instructions retournée par la fonction creationFile()
+    public void deplacement(ArrayDeque<Character> file,Plateau plateau){ //prend en paramètre la file d’instructions retournée par la fonction creationFile()
         while (file.size() > 0){
-            setPositionDirection(file.getLast());
+            setPositionDirection(file.getLast(),plateau);
             file.removeLast();
         }
     }

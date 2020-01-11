@@ -16,8 +16,10 @@ public class TwoPlayers{
 
         System.out.println(" 2 joueurs : ");
         System.out.println();
-        Joueur[] joueurs = new Joueur[nbJoueurs];
-        String[] couleursTortues = {"Rouge", "Vert"};
+
+        Joueur[] joueurs = new Joueur[nbJoueurs]; //création des joueurs
+
+        String[] couleursTortues = {"R", "V"};
 
         for (int i = 0; i < nbJoueurs; i++) { //création des joueurs et association avec les couleurs des tortues
             Joueur joueur = new Joueur();
@@ -44,7 +46,7 @@ public class TwoPlayers{
         plateau.initialisation();
         plateau.set(joueurs[0]);
         plateau.set(joueurs[1]);
-        plateau.setJoyau("JV",7,3);
+
         plateau.display();
         System.out.println();
 

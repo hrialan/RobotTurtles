@@ -20,6 +20,14 @@ public class Plateau{
         return this.taillePlateau;
     }
 
+    public boolean setWall(int Ligne, int Colonne){
+        if( this.isPositionClear(Ligne,Colonne)) {
+            plateau[Ligne][Colonne] = "WALL";
+            return true;
+        }
+        else return false;
+    }
+
     public void display(){
         System.out.println("  0  1  2  3  4  5  6  7");
         System.out.println("  _  _  _  _  _  _  _  _");
@@ -39,10 +47,10 @@ public class Plateau{
             }
         }
         if (nbJoueur < 4) { //si nbJoueur < 4 , on réduit le plateau avec des murs en pierre
-
             for (int L = 0; L < this.taillePlateau; L++) {
-                plateau[L][this.taillePlateau - 1] = "Mur en pierre";
+                plateau[L][this.taillePlateau - 1] = "WALL";
             }
+            plateau[7][3] = "RUBY";
         }
     }
 
@@ -50,14 +58,9 @@ public class Plateau{
         int[] position = joueur.position;
         char direction = joueur.direction;
         if(plateau[position[0]][position[1]].equals(" ")){
-            plateau[position[0]][position[1]] = joueur.getColor() + direction;
+            plateau[position[0]][position[1]] = "T"  + joueur.getColor() + direction;
         }
 
-
-    }
-
-    public void setJoyau(String name,int x, int y){
-        plateau[x][y] = name;
     }
 
 
@@ -65,9 +68,13 @@ public class Plateau{
         plateau[position[0]][position[1]] = " ";
     }
 
-    public boolean isPositionClear(int[] position){
-        if(plateau[position[0]][position[1]].equals(" ")){
+    public boolean isPositionClear(int x, int y){
+        if(x >= 0 && x < 8 && y >= 0 && y < 8){
+        if(plateau[x][y].equals(" ")){
             return true;
+        }
+        else return false;
+
         }
         else {
             return false;

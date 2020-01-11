@@ -24,6 +24,8 @@ public class Jeu {//classe principale sur fonctionnement du jeu dont le fonction
         int n = (int)(Math.random() * nbJoueurs);
 
         while (true) { // il faudra trouver une condition d'arrêt du jeu (arrivé d'un joueur sur le joyau)
+
+
             System.out.println("Joueur " + (n+1) + " à ton tour");
             System.out.println("voici ta main : ");
             joueurs[n].printMain();
@@ -58,25 +60,43 @@ public class Jeu {//classe principale sur fonctionnement du jeu dont le fonction
                             System.out.println("Choisissez un entier entre 1 et " + joueurs[n].sizeMain() + " : ");
                             carte = scanner.nextInt();
                         }
-
                         joueurs[n].addInstructions(joueurs[n].getMain(carte - 1));
                     }
                     joueurs[n].remplirMain();
                     break;
 
+
+
                 case 2://on construit un mur
+                    System.out.println("Saisissez la ligne sur laquelle placer un mur :");
+                    int ligne = scanner.nextInt();
+                    System.out.println("Saisissez maintenant la colonne :");
+                    int colonne = scanner.nextInt();
+
+                    while (! plateau.setWall(ligne,colonne)){
+                        System.out.println("Saisie invalide, recommencez !");
+                        System.out.println("Saisissez la ligne sur laquelle placer un mur :");
+                        ligne = scanner.nextInt();
+                        System.out.println("Saisissez maintenant la colonne :");
+                        colonne = scanner.nextInt();
+                    }
 
                     break;
 
                 case 3: // on execute le programme
                     ArrayDeque<Character> file = joueurs[n].creationFile(joueurs[n].getInstructions());
                     plateau.cleanPosition(joueurs[n].position);
-                    joueurs[n].deplacement(file);
+                    joueurs[n].deplacement(file,plateau);
                     plateau.set(joueurs[n]);
                     break;
+
             }
             plateau.display();
             n = (n+1)%nbJoueurs ; //on change le joueur à chaque tour
         }
+
+
+
+
     }
 }
