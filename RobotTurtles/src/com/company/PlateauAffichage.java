@@ -27,14 +27,10 @@ public class TwoPlayers extends JFrame {
         plateau.initialisation();
         this.setContentPane(pan);
         this.setVisible(true);
-        go();
     }
 
-
-    private void go(){
-        //mettre algorithme du jeu puis repaint
-
-
+    public void repaint(){
+        pan.repaint();
     }
 
     public class PlateauJPanel extends JPanel {
