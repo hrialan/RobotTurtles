@@ -22,8 +22,6 @@ public class Jeu {//classe principale sur fonctionnement du jeu dont le fonction
 
     public void deroulement(){
 
-        PlateauAffichage fen = new PlateauAffichage(plateau);
-
         Scanner scanner = new Scanner(System.in);
         int n = (int)(Math.random() * nbJoueurs);
 

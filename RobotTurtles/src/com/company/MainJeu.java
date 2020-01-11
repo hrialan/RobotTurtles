@@ -8,28 +8,31 @@ import java.io.File;
 import java.io.IOException;
 
 
-public class PlateauAffichage extends JFrame {
+public class MainJeu extends JFrame {
 
     private Plateau plateau;
+    private int nbJoueurs;
     private PlateauJPanel pan = new PlateauJPanel();
     private Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 
 
-    public PlateauAffichage(Plateau plateau) {
-        this.plateau = plateau;
+    public MainJeu(int nbJoueur) {
+        this.nbJoueurs = nbJoueur;
+        this.plateau = new Plateau(nbJoueur);
         this.setTitle("Plateau");
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(dim.width / 2 - 20, dim.width / 2 ); // on enlève 20 a width car cela correspond à la taille en pixel du bandeau
         this.setLocation(0, 0);
         this.setResizable(false);
+        this.plateau.initialisation();
         this.setContentPane(pan);
         this.setVisible(true);
+        go();
     }
 
-    public void repaint(Plateau plateau){
-        this.plateau = plateau;
-        pan.repaint();
+    public void go(){
+       
     }
 
     public class PlateauJPanel extends JPanel {

@@ -51,7 +51,7 @@ public class Menu {      //Dans cette classe, on choisit le nombre de joueur et 
         class Bouton2Listener implements ActionListener {
             public void actionPerformed(ActionEvent arg0) {
                 fenetre.dispose();
-                Jeu jeu = new Jeu(2);
+                MainJeu jeu = new MainJeu(2);
             }
         }
 
