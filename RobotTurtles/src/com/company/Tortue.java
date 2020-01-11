@@ -23,6 +23,7 @@ public class Tortue{
         this.direction = 'N';
     }
 
+
     public boolean setPosition(int x, int y){
         if(x >= 0 && x < 8 && y >= 0 && y < 8) { // on vérifie que l'on ne sort  pas du tableau
             this.position[0] = x;
@@ -55,7 +56,8 @@ public class Tortue{
                 switch (this.direction){
                     case 'N':
                         if (plateau.isPositionClear(position[0] - 1, position[1])) {
-                            setPosition(position[0] - 1, position[1]);
+                                setPosition(position[0] - 1, position[1]);
+                            }
                         }
                         break;
                     case 'E':

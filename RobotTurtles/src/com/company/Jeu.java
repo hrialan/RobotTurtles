@@ -1,5 +1,7 @@
 package com.company;
 
+import sun.jvm.hotspot.types.JBooleanField;
+
 import java.util.ArrayDeque;
 import java.util.Scanner;
 
@@ -12,18 +14,76 @@ public class Jeu {//classe principale sur fonctionnement du jeu dont le fonction
     public Jeu(){
     }
 
-    public Jeu(Joueur[] joueurs,Plateau plateau){
-        this.joueurs = joueurs;
-        this.plateau = plateau;
-        nbJoueurs = joueurs.length;
+    public Jeu(int nbJoueurs){
+        this.nbJoueurs = nbJoueurs;
     }
 
     public void deroulement(){
 
         Scanner scanner = new Scanner(System.in);
-        int n = (int)(Math.random() * nbJoueurs);
 
-        while (true) { // il faudra trouver une condition d'arrêt du jeu (arrivé d'un joueur sur le joyau)
+
+        Plateau plateau = new Plateau(this.nbJoueurs);
+        plateau.initialisation();
+
+        System.out.println( nbJoueurs +" joueurs : ");
+        System.out.println();
+
+        Joueur[] joueurs = new Joueur[nbJoueurs]; //création des joueurs
+
+        String[] couleursTortues = {"R", "V","O","B"};
+
+        for (int i = 0; i < nbJoueurs; i++) { //création des joueurs et association avec les couleurs des tortues
+            Joueur joueur = new Joueur();
+            joueur.setColor(couleursTortues[i]);
+            joueur.setDirection('S');
+            joueurs[i] = joueur;//on rentre les joueurs dans la liste de joueurs
+        }
+
+        switch (nbJoueurs) {
+            case 2:
+                joueurs[0].setPosition(0, 1);//initialisation des positions en fonction du joueur
+                joueurs[1].setPosition(0, 5);
+                plateau.setJoyau(7,3);
+                break;
+
+            case 3:
+                joueurs[0].setPosition(0, 0);
+                joueurs[1].setPosition(0, 3);
+                joueurs[2].setPosition(0, 6);
+                plateau.setJoyau(7,0);
+                plateau.setJoyau(7,3);
+                plateau.setJoyau(7,6);
+                break;
+
+            case 4:
+                joueurs[0].setPosition(0, 0);
+                joueurs[1].setPosition(0, 2);
+                joueurs[2].setPosition(0, 5);
+                joueurs[3].setPosition(0, 7);
+                plateau.setJoyau(7,1);
+                plateau.setJoyau(7,6);
+                break;
+        }
+
+        for(Joueur joueur : joueurs){ // on remplit la main
+            joueur.remplirMain();
+            plateau.set(joueur);
+        }
+
+
+        System.out.println("Voici le plateau : ");
+        System.out.println();
+        System.out.println();
+
+        plateau.display();
+        System.out.println();
+
+
+        int n = (int)(Math.random() * nbJoueurs); //joueur au hasard
+
+
+        while (true) { //is finish
 
 
             System.out.println("Joueur " + (n+1) + " à ton tour");
@@ -94,9 +154,15 @@ public class Jeu {//classe principale sur fonctionnement du jeu dont le fonction
             plateau.display();
             n = (n+1)%nbJoueurs ; //on change le joueur à chaque tour
         }
+    }
 
+    private boolean isFinish(Joueur joueur){
 
-
-
+        if(joueur.position ){
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }

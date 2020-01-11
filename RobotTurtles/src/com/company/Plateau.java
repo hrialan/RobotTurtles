@@ -1,7 +1,6 @@
 package com.company;
 
 public class Plateau{
-
     private String [][] plateau;
     private int taillePlateau = 8; //Le plateau est carré
     private int nbJoueur;
@@ -50,7 +49,6 @@ public class Plateau{
             for (int L = 0; L < this.taillePlateau; L++) {
                 plateau[L][this.taillePlateau - 1] = "WALL";
             }
-            plateau[7][3] = "RUBY";
         }
     }
 
@@ -63,6 +61,10 @@ public class Plateau{
 
     }
 
+
+    public void setJoyau(int x, int y){
+        plateau[x][y] = "RUBY";
+    }
 
     public void cleanPosition(int[] position){
         plateau[position[0]][position[1]] = " ";

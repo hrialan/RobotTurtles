@@ -30,22 +30,8 @@ public class Menu { //Dans cette classe, on choisit le nombre de joueur et quand
             choix = scanner.nextInt();
         }
 
-        switch (choix){
-            case 2:
-                TwoPlayers twoPlayers = new TwoPlayers();
-                twoPlayers.play();
-                break;
-
-            case 3:
-                ThreePlayers threePlayers = new ThreePlayers();
-                threePlayers.play();
-                break;
-
-            case 4:
-                FourPlayers fourPlayers = new FourPlayers();
-                fourPlayers.play();
-                break;
-        }
+        Jeu jeu = new Jeu(choix);
+        jeu.deroulement();
 
     }
 
