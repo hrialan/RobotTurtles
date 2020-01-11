@@ -6,9 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
-public class Menu { //Dans cette classe, on choisit le nombre de joueur et quand on démarre le jeu
-
-
+public class Menu {      //Dans cette classe, on choisit le nombre de joueur et quand on démarre le jeu
     private int nbJoueurs ;
     private JButton bouton2Players = new JButton("2 joueurs");
     private JButton bouton3Players = new JButton("3 joueurs");
@@ -22,8 +20,6 @@ public class Menu { //Dans cette classe, on choisit le nombre de joueur et quand
         return nbJoueurs;
     }
 
-
-
     public void display() { //affiche le menu
 
         fenetre.setTitle("RobotTurtles");
@@ -36,9 +32,9 @@ public class Menu { //Dans cette classe, on choisit le nombre de joueur et quand
         container.setLayout(null);
 
 
-        bouton2Players.setBounds(fenetre.getWidth() / 2 - 100, fenetre.getHeight() / 2, 200, 50);
+        bouton2Players.setBounds(fenetre.getWidth() / 2 - 100, fenetre.getHeight() / 2      , 200, 50);
         bouton3Players.setBounds(fenetre.getWidth() / 2 - 100, fenetre.getHeight() / 2 + 100, 200, 50);
-        bouton4Players.setBounds(fenetre.getWidth() / 2 - 100 , fenetre.getHeight() / 2 + 200, 200, 50);
+        bouton4Players.setBounds(fenetre.getWidth() / 2 - 100, fenetre.getHeight() / 2 + 200, 200, 50);
 
         container.add(bouton2Players);
         container.add(bouton3Players);
@@ -56,24 +52,20 @@ public class Menu { //Dans cette classe, on choisit le nombre de joueur et quand
             public void actionPerformed(ActionEvent arg0) {
                 fenetre.setVisible(false);
                 TwoPlayers twoPlayers = new TwoPlayers();
-                twoPlayers.play();
-
             }
         }
 
         class Bouton3Listener implements ActionListener {
             public void actionPerformed(ActionEvent e) {
                 fenetre.setVisible(false);
-                ThreePlayers threePlayers = new ThreePlayers();
-                threePlayers.play();
+
             }
         }
 
         class Bouton4Listener implements ActionListener {
             public void actionPerformed(ActionEvent e) {
                 fenetre.setVisible(false);
-                FourPlayers fourPlayers = new FourPlayers();
-                fourPlayers.play();
+
             }
         }
 

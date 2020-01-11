@@ -3,7 +3,7 @@ package com.company;
 import javax.swing.*;
 import java.awt.*;
 
-public class Plateau extends JPanel {
+public class Plateau {
 
     private String [][] plateau;
     private int taillePlateau = 8; //Le plateau est carré
@@ -14,11 +14,6 @@ public class Plateau extends JPanel {
     public Plateau(){
     }
 
-    public void paintComponent(Graphics g) {
-        int x[] = {20, 30, 50, 60, 50, 30};
-        int y[] = {40, 20, 20, 40, 60, 60};
-        g.drawPolygon(x, y, 6);
-    }
 
     public Plateau(int nbJoueur){
         this.plateau = new String[taillePlateau][taillePlateau];
@@ -50,8 +45,14 @@ public class Plateau extends JPanel {
         if (nbJoueur < 4) { //si nbJoueur < 4 , on réduit le plateau avec des murs en pierre
 
             for (int L = 0; L < this.taillePlateau; L++) {
-                plateau[L][this.taillePlateau - 1] = "Mur en pierre";
+                plateau[L][this.taillePlateau - 1] = "WALL";
             }
+        }
+
+        if (nbJoueur == 2) {
+            plateau[7][3] = "RUBY";
+            plateau[0][1] = "TRS";
+            plateau[0][5] = "TVS";
         }
     }
 
@@ -59,7 +60,7 @@ public class Plateau extends JPanel {
         int[] position = joueur.position;
         char direction = joueur.direction;
         if(plateau[position[0]][position[1]].equals(" ")){
-            plateau[position[0]][position[1]] = joueur.getColor() + direction;
+            plateau[position[0]][position[1]] = "T" + joueur.getColor() + direction;
         }
 
 
@@ -68,7 +69,6 @@ public class Plateau extends JPanel {
     public void setJoyau(String name,int x, int y){
         plateau[x][y] = name;
     }
-
 
     public void cleanPosition(int[] position){
         plateau[position[0]][position[1]] = " ";
@@ -81,5 +81,12 @@ public class Plateau extends JPanel {
         else {
             return false;
         }
+    }
+
+    public String getValue(int i , int j){
+        return plateau[i][j];
+    }
+    public void setValue(int i , int j, String value){
+        plateau[i][j] = value;
     }
 }
