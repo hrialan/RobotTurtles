@@ -14,11 +14,11 @@ public class Obstacle {
 
     public void create(){
         for(int i=0; i<3;i++){
-            Carte carte = new Carte("Mur en pierre");
+            Carte carte = new Carte("WALL");
             this.murs.add(carte);
         }
         for(int i=0; i<2;i++){
-            Carte carte = new Carte("Mur en glace");
+            Carte carte = new Carte("ICE");
             this.murs.add(carte);
         }
     }
@@ -34,20 +34,20 @@ public class Obstacle {
 
 
     public boolean removePierre(){
-        if(getCardByName("Mur en pierre") == null ){
+        if(getCardByName("WALL") == null ){
             return false;
         }
         else {
-            return murs.remove(getCardByName("Mur en pierre"));
+            return murs.remove(getCardByName("WALL"));
         }
     }
 
     public boolean removeGlace(){
-        if(getCardByName("Mur en glace") == null ){
+        if(getCardByName("ICE") == null ){
             return false;
         }
         else {
-            return murs.remove(getCardByName("Mur en glace"));
+            return murs.remove(getCardByName("ICE"));
         }
     }
 }
