@@ -46,24 +46,21 @@ public class Tortue{
     }
 
     public void setPositionDirection(char instruction,Plateau plateau){
-        /*met à jour les variables globales de position et de direction en fonction des caractères A, G, D
-        */
+        /*met à jour les variables globales de position et de direction en fonction des caractères A, G, D*/
         char[] directions = {'N','E','S','O'};
 
         switch (instruction){
             case 'A': //on avance en prenant en compte la direction
-
                 switch (this.direction){
                     case 'N':
                         if (plateau.isPositionClear(position[0] - 1, position[1])) {
-                                setPosition(position[0] - 1, position[1]);
-                            }
+                            setPosition(position[0] - 1, position[1]);
                         }
                         break;
                     case 'E':
                         if (plateau.isPositionClear(position[0], position[1]+1)) {
-                            setPosition(position[0], position[1] + 1);
-                        }
+                        setPosition(position[0], position[1] + 1);
+                    }
                         break;
                     case 'S':
                         if (plateau.isPositionClear(position[0] + 1, position[1])) {
@@ -71,36 +68,35 @@ public class Tortue{
                         }
                         break;
                     case 'O':
-                        if (plateau.isPositionClear(position[0] , position[1] - 1)) {
-                            setPosition(position[0], position[1] - 1);
-                        }
-                        break;
+                            if (plateau.isPositionClear(position[0] , position[1] - 1)) {
+                                setPosition(position[0], position[1] - 1);
+                            }
+                            break;
                 }
                 break;
 
-            case 'G':
-                for(int i =0 ; i<directions.length; i++){
-                    if(directions[i] == direction){
-                        int a =(((i-1 % directions.length) + directions.length) % directions.length); //subtilité du modulo négatif en java
-                        setDirection(directions[a]);
-                    }
+        case 'G':
+            for(int i =0 ; i<directions.length; i++){
+                if(directions[i] == direction){
+                    int a =(((i-1 % directions.length) + directions.length) % directions.length); //subtilité du modulo négatif en java
+                    setDirection(directions[a]);
                 }
-                break;
+            }
+            break;
 
-            case 'D':
-                for(int i =0 ; i<directions.length; i++){
-                    if(directions[i] == direction){
-                        setDirection(directions[(i+1)%directions.length]);
-                    }
-                }
-                break;
-
-
-            default:
-                System.out.println("Saisie invalide ! ");
-                break;
+        case 'D':
+            for(int i =0 ; i<directions.length; i++){
+                if(directions[i] == direction){
+                    setDirection(directions[(i+1)%directions.length]);
+            }
         }
-    }
+        break;
 
+
+        default:
+        System.out.println("Saisie invalide ! ");
+        break;
+    }
+}
 
 }

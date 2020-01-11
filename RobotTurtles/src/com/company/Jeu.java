@@ -111,6 +111,7 @@ public class Jeu {//classe principale sur fonctionnement du jeu dont le fonction
                         System.out.println("Choisissez un entier entre 1 et 5 : ");
                         choix = scanner.nextInt();
                     }
+
                     int carte;
                     for (int i = 0; i < choix; i++) {
                         joueurs[n].printMain();
@@ -156,13 +157,4 @@ public class Jeu {//classe principale sur fonctionnement du jeu dont le fonction
         }
     }
 
-    private boolean isFinish(Joueur joueur){
-
-        if(joueur.position ){
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
 }
