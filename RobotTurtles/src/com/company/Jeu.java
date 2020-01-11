@@ -5,23 +5,42 @@ import java.util.Scanner;
 
 public class Jeu {//classe principale sur fonctionnement du jeu dont le fonctionnement ne dépend pas vraiment du nombre de joueurs
 
-    Plateau plateau;
+    Plateau plateau ;
     Joueur[] joueurs;
     int nbJoueurs;
 
     public Jeu(){
     }
 
-    public Jeu(Joueur[] joueurs,Plateau plateau){
-        this.joueurs = joueurs;
-        this.plateau = plateau;
-        nbJoueurs = joueurs.length;
+    public Jeu(int nbJoueurs){
+        this.nbJoueurs = nbJoueurs;
+        this.joueurs = new Joueur[nbJoueurs];
+        this.plateau = new Plateau(nbJoueurs);
+        this.plateau.initialisation();
+        this.deroulement();
     }
 
     public void deroulement(){
 
+        PlateauAffichage fen = new PlateauAffichage(plateau);
+
         Scanner scanner = new Scanner(System.in);
         int n = (int)(Math.random() * nbJoueurs);
+
+
+        String[] couleursTortues = {"Rouge", "Vert"};
+
+        for (int i = 0; i < nbJoueurs; i++) { //création des joueurs et association avec les couleurs des tortues
+            Joueur joueur = new Joueur();
+            joueur.setColor(couleursTortues[i]);
+            joueur.setDirection('S');
+
+            joueurs[i] = joueur;//on rentre les joueurs dans la liste de joueurs
+        }
+
+        for(Joueur joueur : joueurs){ // on remplit la main
+            joueur.remplirMain();
+
 
         while (true) { // il faudra trouver une condition d'arrêt du jeu (arrivé d'un joueur sur le joyau)
             System.out.println("Joueur " + (n+1) + " à ton tour");
@@ -75,8 +94,9 @@ public class Jeu {//classe principale sur fonctionnement du jeu dont le fonction
                     plateau.set(joueurs[n]);
                     break;
             }
-            plateau.display();
+
             n = (n+1)%nbJoueurs ; //on change le joueur à chaque tour
-        }
-    }
-}
+           }
+    }}}
+
+
