@@ -32,7 +32,9 @@ public class MainJeu extends JFrame {
     }
 
     public void go(){
-       
+        for(;;) {
+            pan.updateUI();
+        }
     }
 
     public class PlateauJPanel extends JPanel {
