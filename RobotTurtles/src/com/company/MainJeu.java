@@ -28,16 +28,11 @@ public class MainJeu extends JFrame {
         this.plateau.initialisation();
         this.setContentPane(pan);
         this.setVisible(true);
-        go();
     }
 
-    public void go(){
-        for(;;) {
-            pan.updateUI();
-        }
-    }
 
     public class PlateauJPanel extends JPanel {
+
 
         public void paintComponent(Graphics g) {
             super.paintComponent(g);
