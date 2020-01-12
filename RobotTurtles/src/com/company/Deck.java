@@ -26,7 +26,6 @@ public class Deck {
             Carte carte = new Carte("Laser");
             this.deck.add(carte);
         }
-
         Collections.shuffle(this.deck); //on mélange les cartes
     }
 

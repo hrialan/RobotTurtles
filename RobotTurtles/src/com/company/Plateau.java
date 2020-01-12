@@ -62,17 +62,22 @@ public class Plateau{
     }
 
 
-    public void setJoyau(int x, int y){
-        plateau[x][y] = "RUBY";
+    public void setJoyau(int[][] posisitionJoyau){
+        for(int[] elt : posisitionJoyau) {
+            plateau[elt[0]][elt[1]] = "RUBY";
+        }
     }
 
     public void cleanPosition(int[] position){
         plateau[position[0]][position[1]] = " ";
     }
 
+    public void cleanPositionCoord(int x, int y){{
+        plateau[x][y] = " ";
+    }}
     public boolean isPositionClear(int x, int y){
         if(x >= 0 && x < 8 && y >= 0 && y < 8){
-        if(plateau[x][y].equals(" ")){
+        if(plateau[x][y].equals(" ") || plateau[x][y].equals("RUBY")){
             return true;
         }
         else return false;
@@ -81,5 +86,18 @@ public class Plateau{
         else {
             return false;
         }
+    }
+
+    public boolean isICEForLaser(int x, int y ){
+        if(x >= 0 && x < 8 && y >= 0 && y < 8) {
+            if (plateau[x][y].equals("ICE")) {
+                this.cleanPositionCoord(x, y);
+                return true;
+            } else return false;
+        }
+        else {
+            return false;
+        }
+
     }
 }

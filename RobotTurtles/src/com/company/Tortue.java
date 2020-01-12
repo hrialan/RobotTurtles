@@ -35,67 +35,102 @@ public class Tortue{
         }
     }
 
-    public boolean setDirection(char direction){
-        if(direction != 'N' && direction != 'S' && direction != 'E' && direction != 'O') {
-            return false;
-        }
-        else {
+    public void setDirection(char direction){
             this.direction = direction;
-            return true;
-        }
+
     }
 
     public void setPositionDirection(char instruction,Plateau plateau){
         /*met à jour les variables globales de position et de direction en fonction des caractères A, G, D*/
-        char[] directions = {'N','E','S','O'};
 
         switch (instruction){
             case 'A': //on avance en prenant en compte la direction
                 switch (this.direction){
                     case 'N':
                         if (plateau.isPositionClear(position[0] - 1, position[1])) {
-                            setPosition(position[0] - 1, position[1]);
+                            position[0] -= 1;
+                            setPosition(position[0], position[1]);
                         }
                         break;
                     case 'E':
                         if (plateau.isPositionClear(position[0], position[1]+1)) {
-                        setPosition(position[0], position[1] + 1);
-                    }
+                            position[1] += 1;
+                            setPosition(position[0], position[1] );
+                        }
                         break;
                     case 'S':
                         if (plateau.isPositionClear(position[0] + 1, position[1])) {
-                            setPosition(position[0] + 1, position[1]);
+                            position[0] += 1;
+                            setPosition(position[0], position[1]);
                         }
                         break;
                     case 'O':
                             if (plateau.isPositionClear(position[0] , position[1] - 1)) {
-                                setPosition(position[0], position[1] - 1);
+                                position[1] -= 1;
+                                setPosition(position[0], position[1] );
                             }
-                            break;
+                        break;
+
+                    default:
+                        break;
                 }
-                break;
+            break;
 
         case 'G':
-            for(int i =0 ; i<directions.length; i++){
-                if(directions[i] == direction){
-                    int a =(((i-1 % directions.length) + directions.length) % directions.length); //subtilité du modulo négatif en java
-                    setDirection(directions[a]);
-                }
+
+            switch (this.direction){
+                case 'N':
+                    setDirection('O');
+                    break;
+                case 'S':
+                    setDirection('E');
+                    break;
+                case 'O':
+                    setDirection('S');
+                    break;
+                case 'E':
+                    setDirection('N');
+                    break;
             }
             break;
 
         case 'D':
-            for(int i =0 ; i<directions.length; i++){
-                if(directions[i] == direction){
-                    setDirection(directions[(i+1)%directions.length]);
+            switch (this.direction){
+                case 'N':
+                    setDirection('E');
+                    break;
+                case 'S':
+                    setDirection('O');
+                    break;
+                case 'O':
+                    setDirection('N');
+                    break;
+                case 'E':
+                    setDirection('S');
+                    break;
             }
-        }
-        break;
+            break;
 
+        case 'L':
+            switch (this.direction){
+                case 'N':
+                    plateau.isICEForLaser(position[0] - 1, position[1]);
+                    break;
+                case 'E':
+                    plateau.isICEForLaser(position[0] , position[1]+1);
+                    break;
+                case 'S':
+                    plateau.isICEForLaser(position[0] + 1, position[1]);
+                    break;
+                case 'O':
+                    plateau.isICEForLaser(position[0], position[1] - 1);
+                    break;
+                }
+            break;
 
         default:
-        System.out.println("Saisie invalide ! ");
-        break;
+            System.out.println("Saisie invalide ! ");
+            break;
     }
 }
 

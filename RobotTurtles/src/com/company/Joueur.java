@@ -72,8 +72,8 @@ public class Joueur extends Tortue{
 
     public void deplacement(ArrayDeque<Character> file,Plateau plateau){ //prend en paramètre la file d’instructions retournée par la fonction creationFile()
         while (file.size() > 0){
-            setPositionDirection(file.getLast(),plateau);
-            file.removeLast();
+            setPositionDirection(file.getFirst(),plateau);
+            file.removeFirst();
         }
     }
 }
