@@ -58,6 +58,9 @@ public class Plateau{
         if(plateau[position[0]][position[1]].equals(" ")){
             plateau[position[0]][position[1]] = "T"  + joueur.getColor() + direction;
         }
+        else if(plateau[position[0]][position[1]].equals("RUBY")){
+            plateau[position[0]][position[1]] = "T"  + joueur.getColor() + "Gain";
+        }
 
     }
 

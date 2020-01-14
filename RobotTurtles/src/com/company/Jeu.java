@@ -49,7 +49,8 @@ public class Jeu {//classe principale sur fonctionnement du jeu dont le fonction
             plateau.setJoyau(positionJoyau);
 
             joueurs[0].setPosition(0, 1);//initialisation des positions en fonction du joueur
-            joueurs[1].setPosition(0, 5);
+            joueurs[1].setPosition(6, 3);//0 ou 5
+
 
         }
 
@@ -100,8 +101,10 @@ public class Jeu {//classe principale sur fonctionnement du jeu dont le fonction
         int n = (int)(Math.random() * nbJoueurs); //joueur au hasard
 
 
-        while (isFinish(positionJoyau,joueurs[n])) { //is finish
+        while (isFinish(positionJoyau,joueurs[n])){ //is finish
 
+
+            n = (n+1)%nbJoueurs ; //on change le joueur à chaque tour
 
             System.out.println("Joueur " + (n+1) + " à ton tour, tu as la tortue " + joueurs[n].getColor());
             System.out.println();
@@ -124,7 +127,7 @@ public class Jeu {//classe principale sur fonctionnement du jeu dont le fonction
             switch (choix){
                 case 1: //on complète le programme
 
-                    System.out.println("Combien de cartes voulez vous ajouter à votre algorithme ? : ");
+                    System.out.println("Combien de cartes voulez vous ajouter à votre algorithme ? : (Violette = Droite / Jaune = Gauche");
                     choix = scanner.nextInt();
                     while (choix<1 || choix>5){
                         System.out.println("Choisissez un entier entre 1 et 5 : ");
@@ -134,7 +137,7 @@ public class Jeu {//classe principale sur fonctionnement du jeu dont le fonction
                     int carte;
                     for (int i = 0; i < choix; i++) {
                         joueurs[n].printMain();
-                        System.out.println((i + 1) + "- Quelle carte voulez vous ajouter ? (Violette = Droite / Jaune = Gauche");
+                        System.out.println((i + 1) + "- Quelle carte voulez vous ajouter ? ");
                         carte = scanner.nextInt();
                         while (carte<1 || carte >joueurs[n].sizeMain()){
                             System.out.println("Choisissez un entier entre 1 et " + joueurs[n].sizeMain() + " : ");
@@ -173,9 +176,7 @@ public class Jeu {//classe principale sur fonctionnement du jeu dont le fonction
                     break;
 
             }
-
             plateau.display();
-            n = (n+1)%nbJoueurs ; //on change le joueur à chaque tour
         }
     }
 
@@ -183,10 +184,12 @@ public class Jeu {//classe principale sur fonctionnement du jeu dont le fonction
 
     public boolean isFinish(int[][] positionJoyau, Joueur joueur){
         for(int[] elt : positionJoyau){
-        if(joueur.position == elt){
+
+        if(joueur.position[0] == elt[0] && joueur.position[1] == elt[1]){
             System.out.println("Joueur " + joueur.getColor() + " vous avez gagné, BRAVO !!");
             return false;
         }
+
         }
 
         return true;
