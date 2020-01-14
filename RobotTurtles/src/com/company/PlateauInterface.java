@@ -7,34 +7,30 @@ import javax.swing.JFrame;
 import java.io.File;
 import java.io.IOException;
 
+public class PlateauInterface extends JFrame {
 
-public class TwoPlayers extends JFrame {
 
-    private int nbJoueurs = 2;
-    private Plateau plateau = new Plateau(nbJoueurs);
-    private Joueur[] joueurs;
+    private Plateau plateau;
+
     private PlateauJPanel pan = new PlateauJPanel();
     private Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 
 
-    public TwoPlayers() {
+    public PlateauInterface(Plateau plateau) {
+        this.plateau = plateau;
         this.setTitle("Plateau");
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(dim.width / 2 - 20, dim.width / 2 ); // on enlève 20 a width car cela correspond à la taille en pixel du bandeau
         this.setLocation(0, 0);
         this.setResizable(false);
-        plateau.initialisation();
         this.setContentPane(pan);
         this.setVisible(true);
-        go();
+
     }
 
-
-    private void go(){
-        //mettre algorithme du jeu puis repaint
-
-
+    public void quit(){
+        this.dispose();
     }
 
     public class PlateauJPanel extends JPanel {

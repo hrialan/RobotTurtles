@@ -24,6 +24,14 @@ public class Plateau {
         return this.taillePlateau;
     }
 
+    public boolean setWall(int Ligne, int Colonne){
+        if( this.isPositionClear(Ligne,Colonne)) {
+            plateau[Ligne][Colonne] = "WALL";
+            return true;
+        }
+        else return false;
+    }
+
     public void display(){
         System.out.println("  0  1  2  3  4  5  6  7");
         System.out.println("  _  _  _  _  _  _  _  _");
@@ -49,11 +57,6 @@ public class Plateau {
             }
         }
 
-        if (nbJoueur == 2) {
-            plateau[7][3] = "RUBY";
-            plateau[0][1] = "TRS";
-            plateau[0][5] = "TVS";
-        }
     }
 
     public void set(Joueur joueur){
@@ -63,20 +66,33 @@ public class Plateau {
             plateau[position[0]][position[1]] = "T" + joueur.getColor() + direction;
         }
 
+        else if(plateau[position[0]][position[1]].equals("RUBY")){
+            plateau[position[0]][position[1]] = "T"  + joueur.getColor() + "Gain";
+        }
 
     }
 
-    public void setJoyau(String name,int x, int y){
-        plateau[x][y] = name;
+    public void setJoyau(int[][] posisitionJoyau){
+        for(int[] elt : posisitionJoyau) {
+            plateau[elt[0]][elt[1]] = "RUBY";
+        }
     }
 
     public void cleanPosition(int[] position){
         plateau[position[0]][position[1]] = " ";
     }
 
-    public boolean isPositionClear(int[] position){
-        if(plateau[position[0]][position[1]].equals(" ")){
-            return true;
+    public void cleanPositionCoord(int x, int y){{
+        plateau[x][y] = " ";
+    }}
+
+    public boolean isPositionClear(int x, int y){
+        if(x >= 0 && x < 8 && y >= 0 && y < 8){
+            if(plateau[x][y].equals(" ") || plateau[x][y].equals("RUBY")){
+                return true;
+            }
+            else return false;
+
         }
         else {
             return false;
@@ -86,7 +102,23 @@ public class Plateau {
     public String getValue(int i , int j){
         return plateau[i][j];
     }
+
+
     public void setValue(int i , int j, String value){
         plateau[i][j] = value;
+    }
+
+
+    public boolean isICEForLaser(int x, int y ){
+        if(x >= 0 && x < 8 && y >= 0 && y < 8) {
+            if (plateau[x][y].equals("ICE")) {
+                this.cleanPositionCoord(x, y);
+                return true;
+            } else return false;
+        }
+        else {
+            return false;
+        }
+
     }
 }

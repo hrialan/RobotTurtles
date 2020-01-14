@@ -51,13 +51,14 @@ public class Menu {      //Dans cette classe, on choisit le nombre de joueur et 
         class Bouton2Listener implements ActionListener {
             public void actionPerformed(ActionEvent arg0) {
                 fenetre.setVisible(false);
-                TwoPlayers twoPlayers = new TwoPlayers();
+                Jeu jeu = new Jeu(2);
             }
         }
 
         class Bouton3Listener implements ActionListener {
             public void actionPerformed(ActionEvent e) {
                 fenetre.setVisible(false);
+                Jeu jeu = new Jeu(3);
 
             }
         }
@@ -65,6 +66,7 @@ public class Menu {      //Dans cette classe, on choisit le nombre de joueur et 
         class Bouton4Listener implements ActionListener {
             public void actionPerformed(ActionEvent e) {
                 fenetre.setVisible(false);
+                Jeu jeu = new Jeu(4);
 
             }
         }
