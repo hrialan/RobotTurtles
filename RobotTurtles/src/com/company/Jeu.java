@@ -49,7 +49,7 @@ public class Jeu {//classe principale sur fonctionnement du jeu dont le fonction
             plateau.setJoyau(positionJoyau);
 
             joueurs[0].setPosition(0, 1);//initialisation des positions en fonction du joueur
-            joueurs[1].setPosition(6, 3);//0 ou 5
+            joueurs[1].setPosition(0, 5);//0 ou 5
 
 
         }
