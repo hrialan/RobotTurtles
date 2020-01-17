@@ -3,10 +3,8 @@ package com.company;
 import java.util.ArrayDeque;
 import java.util.Scanner;
 
-public class Jeu {//classe principale sur fonctionnement du jeu dont le fonctionnement ne dépend pas vraiment du nombre de joueurs
+public class Jeu extends PlateauInterface{//classe principale sur fonctionnement du jeu dont le fonctionnement ne dépend pas vraiment du nombre de joueurs
 
-    Plateau plateau;
-    Joueur[] joueurs;
     int nbJoueurs;
 
     public Jeu(){
@@ -17,20 +15,19 @@ public class Jeu {//classe principale sur fonctionnement du jeu dont le fonction
         this.deroulement();
     }
 
-    public void deroulement(){
+    public void deroulement() {
 
         Scanner scanner = new Scanner(System.in);
 
-
-        Plateau plateau = new Plateau(this.nbJoueurs);
+        this.plateau = new Plateau(this.nbJoueurs);
         plateau.initialisation();
 
-        System.out.println( nbJoueurs +" joueurs : ");
+        System.out.println(nbJoueurs + " joueurs : ");
         System.out.println();
 
         Joueur[] joueurs = new Joueur[nbJoueurs]; //création des joueurs
 
-        String[] couleursTortues = {"R", "V","O","B"};
+        String[] couleursTortues = {"R", "V", "O", "B"};
 
         for (int i = 0; i < nbJoueurs; i++) { //création des joueurs et association avec les couleurs des tortues
             Joueur joueur = new Joueur();
@@ -41,7 +38,7 @@ public class Jeu {//classe principale sur fonctionnement du jeu dont le fonction
 
         int[][] positionJoyau;
 
-        if(nbJoueurs ==2) {
+        if (nbJoueurs == 2) {
             positionJoyau = new int[1][2];
             positionJoyau[0][0] = 7;
             positionJoyau[0][1] = 3;
@@ -50,9 +47,7 @@ public class Jeu {//classe principale sur fonctionnement du jeu dont le fonction
             joueurs[0].setPosition(0, 1);//initialisation des positions en fonction du joueur
             joueurs[1].setPosition(0, 5);//0 ou 5
 
-        }
-
-        else if(nbJoueurs ==3) {
+        } else if (nbJoueurs == 3) {
             positionJoyau = new int[3][2];
             positionJoyau[0][0] = 7;
             positionJoyau[0][1] = 0;
@@ -65,9 +60,7 @@ public class Jeu {//classe principale sur fonctionnement du jeu dont le fonction
             joueurs[0].setPosition(0, 0);
             joueurs[1].setPosition(0, 3);
             joueurs[2].setPosition(0, 6);
-        }
-
-        else {
+        } else {
             positionJoyau = new int[2][2];
             positionJoyau[0][0] = 7;
             positionJoyau[0][1] = 1;
@@ -81,7 +74,7 @@ public class Jeu {//classe principale sur fonctionnement du jeu dont le fonction
             joueurs[3].setPosition(0, 7);
         }
 
-        for(Joueur joueur : joueurs){ // on remplit la main
+        for (Joueur joueur : joueurs) { // on remplit la main
             joueur.remplirMain();
             plateau.set(joueur);
         }
@@ -91,9 +84,10 @@ public class Jeu {//classe principale sur fonctionnement du jeu dont le fonction
         System.out.println();
 
         plateau.display();
+
         System.out.println();
 
-        int n = (int)(Math.random() * nbJoueurs); //joueur au hasard
+        int n = (int) (Math.random() * nbJoueurs); //joueur au hasard
 
 
         while (isFinish(positionJoyau,joueurs[n])){ //is finish
@@ -108,17 +102,19 @@ public class Jeu {//classe principale sur fonctionnement du jeu dont le fonction
                     + "1 - complète ton programme" +"\n"
                     + "2 - Construit un mur" + "\n"
                     + "3 - Execute ton programme " + "\n"
+                    + "4 - Passer le tour" + "\n"
                     + " A toi de choisir : ");
 
 
             int choix = scanner.nextInt();
 
-            while (choix != 1 & choix != 2 & choix != 3){
+            while (choix != 1 & choix != 2 & choix != 3 & choix != 4){
                 System.out.println("choix invalide, recommence :");
                 choix = scanner.nextInt();
             }
 
             switch (choix){
+
                 case 1: //on complète le programme
 
                     System.out.println("Combien de cartes voulez vous ajouter à votre algorithme ? : (Violette = Droite / Jaune = Gauche");
@@ -129,6 +125,7 @@ public class Jeu {//classe principale sur fonctionnement du jeu dont le fonction
                     }
 
                     int carte;
+
                     for (int i = 0; i < choix; i++) {
                         joueurs[n].printMain();
                         System.out.println((i + 1) + "- Quelle carte voulez vous ajouter ? ");
@@ -169,23 +166,39 @@ public class Jeu {//classe principale sur fonctionnement du jeu dont le fonction
                     plateau.set(joueurs[n]);
                     break;
 
+                case 4:
+                    System.out.println("Souhaitez vous defausser vos cartes ? (oui : 1 - non : 0)");
+                    choix = scanner.nextInt();
+                    while (choix<0 || choix>1){
+                        System.out.println("Choisissez soit 0 (non) soit 1 (oui) :  ");
+                        choix = scanner.nextInt();
+                    }
+                    if(choix == 1){
+                        for (int i = 0; i < joueurs[n].sizeMain() ; i++) {
+                            joueurs[n].getMain(i);
+                        }
+                        joueurs[n].remplirMain();
+                    }
+                    break;
+
             }
             plateau.display();
         }
-    }
+  }
+
 
 
     public boolean isFinish(int[][] positionJoyau, Joueur joueur){
         for(int[] elt : positionJoyau){
 
-            if(joueur.position[0] == elt[0] && joueur.position[1] == elt[1]){
-                System.out.println("Joueur " + joueur.getColor() + " vous avez gagné, BRAVO !!");
-                return false;
-            }
-
+        if(joueur.position[0] == elt[0] && joueur.position[1] == elt[1]){
+            System.out.println("Joueur " + joueur.getColor() + " vous avez gagné, BRAVO !!");
+            return false;
         }
-
+        }
         return true;
     }
 
+
 }
+

@@ -1,5 +1,4 @@
 package com.company;
-
 import javax.imageio.ImageIO;
 import java.awt.*;
 import javax.swing.JPanel;
@@ -9,35 +8,38 @@ import java.io.IOException;
 
 public class PlateauInterface extends JFrame {
 
+    protected Plateau plateau;
+    protected PlateauJPanel plt = new PlateauJPanel();
 
-    private Plateau plateau;
-
-    private PlateauJPanel pan = new PlateauJPanel();
     private Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-
-
-    public PlateauInterface(Plateau plateau) {
-        this.plateau = plateau;
-        this.setTitle("Plateau");
-        this.setLocationRelativeTo(null);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(dim.width / 2 - 20, dim.width / 2 ); // on enlève 20 a width car cela correspond à la taille en pixel du bandeau
-        this.setLocation(0, 0);
-        this.setResizable(false);
-        this.setContentPane(pan);
-        this.setVisible(true);
+    public PlateauInterface() {
 
     }
+
+//    public PlateauInterface() {
+//        this.setTitle("Plateau");
+//        this.setLocationRelativeTo(null);
+//        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        this.setSize(dim.width / 2 - 20, dim.width / 2 ); // on enlève 20 a width car cela correspond à la taille en pixel du bandeau
+//        this.setLocation(0, 0);
+//        this.setResizable(false);
+//        this.setContentPane(plt);
+//        this.setVisible(true);
+//    }
+
 
     public void quit(){
         this.dispose();
     }
 
+
     public class PlateauJPanel extends JPanel {
 
         public void paintComponent(Graphics g) {
+
             super.paintComponent(g);
             addImage("images/PlateauBackground.png",0,0,this.getWidth(), this.getHeight(),g);
+
             for (int i = 0; i < plateau.taille(); i++) {
                 for (int j = 0; j < plateau.taille(); j++ ) {
                     String source = "";
@@ -67,6 +69,7 @@ public class PlateauInterface extends JFrame {
                     }
                 }
             }
+
         }
     }
 

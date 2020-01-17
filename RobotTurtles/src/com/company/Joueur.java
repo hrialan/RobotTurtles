@@ -26,7 +26,8 @@ public class Joueur extends Tortue{
 
 
     public Carte getLastCard(){return deck.getLastCard();}
-    public void addInstructions(Carte carte){instructions.addLast(carte);};
+
+    public void addInstructions(Carte carte){instructions.addLast(carte);}
     public Carte getMain(int indice){return main.remove(indice);}
     public ArrayDeque<Carte> getInstructions(){return this.instructions;}
 

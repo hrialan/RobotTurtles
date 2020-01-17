@@ -7,17 +7,12 @@ import java.awt.event.ActionListener;
 
 
 public class Menu {      //Dans cette classe, on choisit le nombre de joueur et quand on démarre le jeu
-    private int nbJoueurs ;
     private JButton bouton2Players = new JButton("2 joueurs");
     private JButton bouton3Players = new JButton("3 joueurs");
     private JButton bouton4Players = new JButton("4 joueurs");
     private JFrame fenetre = new JFrame();
 
     public Menu(){
-    }
-
-    public int getNbJoueurs(){
-        return nbJoueurs;
     }
 
     public void display() { //affiche le menu

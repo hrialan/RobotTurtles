@@ -33,12 +33,15 @@ public class Plateau {
     }
 
     public void display(){
-        System.out.println("  0  1  2  3  4  5  6  7");
-        System.out.println("  _  _  _  _  _  _  _  _");
+        System.out.println("    0     1     2     3     4     5     6     7 ");
+        System.out.println("   ___   ___   ___   ___   ___   ___   ___   ___");
         for(int L = 0; L < this.taillePlateau; L++){
-            System.out.print(L + "|");
+            System.out.print(L);
             for(int C = 0; C < this.taillePlateau; C++){
-                System.out.print(plateau[L][C] + "  ");
+                    System.out.print("|" + plateau[L][C]);
+                    for(int i =0; i< 5 - plateau[L][C].length();i++){
+                        System.out.print(" ");
+                    }
             }
             System.out.println();
         }
