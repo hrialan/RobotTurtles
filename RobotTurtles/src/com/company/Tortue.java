@@ -114,16 +114,16 @@ public class Tortue{
         case 'L':
             switch (this.direction){
                 case 'N':
-                    plateau.isICEForLaser(position[0] - 1, position[1]);
+                    plateau.laserIt(position[0] - 1, position[1]);
                     break;
                 case 'E':
-                    plateau.isICEForLaser(position[0] , position[1]+1);
+                    plateau.laserIt(position[0] , position[1]+1);
                     break;
                 case 'S':
-                    plateau.isICEForLaser(position[0] + 1, position[1]);
+                    plateau.laserIt(position[0] + 1, position[1]);
                     break;
                 case 'O':
-                    plateau.isICEForLaser(position[0], position[1] - 1);
+                    plateau.laserIt(position[0], position[1] - 1);
                     break;
                 }
             break;

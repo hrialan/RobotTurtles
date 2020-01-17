@@ -48,7 +48,7 @@ public class Jeu {//classe principale sur fonctionnement du jeu dont le fonction
             plateau.setJoyau(positionJoyau);
 
             joueurs[0].setPosition(0, 1);//initialisation des positions en fonction du joueur
-            joueurs[1].setPosition(6, 3);//0 1 0 5
+            joueurs[1].setPosition(0, 5);//0 1 0 5
 
 
         }
@@ -129,7 +129,7 @@ public class Jeu {//classe principale sur fonctionnement du jeu dont le fonction
             switch (choix){
                 case 1: //on complète le programme
 
-                    System.out.println("Combien de cartes voulez vous ajouter à votre algorithme ? : (Violette = Droite / Jaune = Gauche");
+                    System.out.println("Combien de cartes voulez vous ajouter à votre algorithme ? : (Violette = Droite / Jaune = Gauche)");
                     choix = scanner.nextInt();
                     while (choix<1 || choix>5){
                         System.out.println("Choisissez un entier entre 1 et 5 : ");
@@ -166,7 +166,7 @@ public class Jeu {//classe principale sur fonctionnement du jeu dont le fonction
 
                     Carte obstacle = joueurs[n].removeCarteObstacle(indiceObstacle - 1);
 
-                    System.out.println("Saisissez la ligne sur laquelle placer l'obstacle :");
+                    System.out.println("Saisissez la ligne sur laquelle placer l'obstacle : ");
                     int ligne = scanner.nextInt();
                     System.out.println("Saisissez maintenant la colonne : ");
                     int colonne = scanner.nextInt();
@@ -207,7 +207,7 @@ public class Jeu {//classe principale sur fonctionnement du jeu dont le fonction
                         }
                         switch (choix){
                             case 5: // on enleve tout
-                                for (int i = 0; i < joueurs[n].sizeMain() ; i++) {
+                                for (int i = 0; i < 5 ; i++) {
                                     joueurs[n].getMain(i);//retire la carte d'indice i
                                 }
                                 break;

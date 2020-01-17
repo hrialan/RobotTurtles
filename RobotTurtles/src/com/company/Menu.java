@@ -15,7 +15,6 @@ public class Menu { //Dans cette classe, on choisit le nombre de joueur et quand
     }
 
 
-
     public void display(){ //affiche le menu
         Scanner scanner = new Scanner(System.in);
 

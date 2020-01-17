@@ -91,7 +91,7 @@ public class Plateau{
         }
     }
 
-    public boolean isICEForLaser(int x, int y ){
+    public boolean laserIt(int x, int y ){
         if(x >= 0 && x < 8 && y >= 0 && y < 8) {
             if (plateau[x][y].equals("ICE")) {
                 this.cleanPositionCoord(x, y);
