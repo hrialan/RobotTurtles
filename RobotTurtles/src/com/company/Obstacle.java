@@ -1,11 +1,10 @@
 package com.company;
 
-import java.util.ArrayDeque;
 import java.util.ArrayList;
 
 public class Obstacle {
 
-    ArrayList<Carte> murs;
+    private ArrayList<Carte> murs;
 
     public Obstacle(){
         this.murs = new ArrayList<>();
@@ -50,4 +49,22 @@ public class Obstacle {
             return murs.remove(getCardByName("ICE"));
         }
     }
+
+    public void showWellObstacles(){
+        int i = 0;
+        for (Carte mur : murs) {
+            i++;
+            System.out.println(i + " " + mur.getName());
+        }
+        System.out.println();
+    }
+
+    public Carte removeCard(int indice){
+        return this.murs.remove(indice);
+    }
+
+    public int getSize(){
+        return murs.size();
+    }
+
 }

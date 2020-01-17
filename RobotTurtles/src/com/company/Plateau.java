@@ -19,21 +19,24 @@ public class Plateau{
         return this.taillePlateau;
     }
 
-    public boolean setWall(int Ligne, int Colonne){
+    public boolean setObstacle(int Ligne, int Colonne, Carte obstacle){
         if( this.isPositionClear(Ligne,Colonne)) {
-            plateau[Ligne][Colonne] = "WALL";
+            plateau[Ligne][Colonne] = obstacle.getName();
             return true;
         }
         else return false;
     }
 
     public void display(){
-        System.out.println("  0  1  2  3  4  5  6  7");
-        System.out.println("  _  _  _  _  _  _  _  _");
+        System.out.println("    0     1     2     3     4     5     6     7 ");
+        System.out.println("   ___   ___   ___   ___   ___   ___   ___   ___");
         for(int L = 0; L < this.taillePlateau; L++){
-            System.out.print(L + "|");
+            System.out.print(L);
             for(int C = 0; C < this.taillePlateau; C++){
-                System.out.print(plateau[L][C] + "  ");
+                System.out.print("|" + plateau[L][C]);
+                for(int i =0; i< 5 - plateau[L][C].length();i++){
+                    System.out.print(" ");
+                }
             }
             System.out.println();
         }
@@ -57,9 +60,6 @@ public class Plateau{
         char direction = joueur.direction;
         if(plateau[position[0]][position[1]].equals(" ")){
             plateau[position[0]][position[1]] = "T"  + joueur.getColor() + direction;
-        }
-        else if(plateau[position[0]][position[1]].equals("RUBY")){
-            plateau[position[0]][position[1]] = "T"  + joueur.getColor() + "Gain";
         }
 
     }

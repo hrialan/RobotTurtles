@@ -30,12 +30,33 @@ public class Joueur extends Tortue{
     public Carte getMain(int indice){return main.remove(indice);}
     public ArrayDeque<Carte> getInstructions(){return this.instructions;}
 
-    public void printMain(){
+    public void printMain(){//sur une ligne
         for (Carte carte : main){
             System.out.print(carte.getName() + " ");
         }
         System.out.println();
-    };
+    }
+    public void showWellMain(){
+        int i = 0;
+        for (Carte carte : main) {
+            i++;
+            System.out.println(i + " " + carte.getName());
+        }
+        System.out.println();
+    }
+
+    public void showWellObstacle(){
+        obstacle.showWellObstacles();
+    }
+
+    public int obstacleSize(){
+        return obstacle.getSize();
+    }
+
+    public Carte removeCarteObstacle(int indice){
+        return obstacle.removeCard(indice);
+
+    }
 
     public void remplirMain(){
         while(main.size()<5){
