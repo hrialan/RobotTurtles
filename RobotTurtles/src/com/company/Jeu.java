@@ -97,6 +97,7 @@ public class Jeu {//classe principale sur fonctionnement du jeu dont le fonction
 
         plateau.display();
         System.out.println();
+        System.out.println();
 
 
         int n = (int)(Math.random() * nbJoueurs); //joueur au hasard
@@ -116,33 +117,35 @@ public class Jeu {//classe principale sur fonctionnement du jeu dont le fonction
                     + "1 - complèter votre programme" +"\n"
                     + "2 - Construir un mur" + "\n"
                     + "3 - Executer votre programme " + "\n"
-                    + "4 - Passer le tour" + "\n"
+                    + "4 - Passer le tour" + "\n\n"
                     + " A vous de choisir : ");
 
             int choix = scanner.nextInt();
 
             while (choix != 1 & choix != 2 & choix != 3 & choix != 4){
-                System.out.println("choix invalide, recommence :");
+                System.out.println("\nchoix invalide, recommence :");
                 choix = scanner.nextInt();
             }
 
             switch (choix){
                 case 1: //on complète le programme
 
-                    System.out.println("Combien de cartes voulez vous ajouter à votre algorithme ? : (Violette = Droite / Jaune = Gauche)");
+                    System.out.println("\nCombien de cartes voulez vous ajouter à votre algorithme ? : (Violette = Droite / Jaune = Gauche)");
                     choix = scanner.nextInt();
                     while (choix<1 || choix>5){
-                        System.out.println("Choisissez un entier entre 1 et 5 : ");
+                        System.out.println("Choisissez un entier entre 1 et 5 : \n\n");
                         choix = scanner.nextInt();
                     }
 
                     int carte;
                     for (int i = 0; i < choix; i++) {
+                        System.out.println();
+                        System.out.println();
                         joueurs[n].showWellMain();
-                        System.out.println((i + 1) + "- Quelle carte voulez vous ajouter ? ");
+                        System.out.println((i + 1) + "\nQuelle carte voulez vous ajouter ? ");
                         carte = scanner.nextInt();
                         while (carte<1 || carte >joueurs[n].sizeMain()){
-                            System.out.println("Choisissez un entier entre 1 et " + joueurs[n].sizeMain() + " : ");
+                            System.out.println("\nChoisissez un entier entre 1 et " + joueurs[n].sizeMain() + " : ");
                             carte = scanner.nextInt();
                         }
                         joueurs[n].addInstructions(joueurs[n].getMain(carte - 1));
@@ -153,7 +156,7 @@ public class Jeu {//classe principale sur fonctionnement du jeu dont le fonction
 
 
                 case 2://on construit un mur
-                    System.out.println("Voici la liste des obstacles que vous possédez : ");
+                    System.out.println("\nVoici la liste des obstacles que vous possédez : ");
                     System.out.println();
                     joueurs[n].showWellObstacle();
                     System.out.println("Quel obstacle choisissez vous ? ");
@@ -183,7 +186,7 @@ public class Jeu {//classe principale sur fonctionnement du jeu dont le fonction
 
                 case 3: // on execute le programme
                     ArrayDeque<Character> file = joueurs[n].creationFile(joueurs[n].getInstructions());
-                    System.out.println("instructions : " + file);
+                    System.out.println("\ninstructions : " + file);
 
                     plateau.cleanPosition(joueurs[n].position);
                     joueurs[n].deplacement(file,plateau);
@@ -191,10 +194,10 @@ public class Jeu {//classe principale sur fonctionnement du jeu dont le fonction
                     break;
 
                 case 4:// on passe le tour et on demande si on defausse
-                    System.out.println("Souhaitez vous defausser vos cartes ? (oui : 1 - non : 0)");
+                    System.out.println("\nSouhaitez vous defausser vos cartes ? (oui : 1 - non : 0)");
                     choix = scanner.nextInt();
                     while (choix<0 || choix>1){
-                        System.out.println("Choisissez soit 0 (non) soit 1 (oui) :  ");
+                        System.out.println("\nChoisissez soit 0 (non) soit 1 (oui) :  ");
                         choix = scanner.nextInt();
                     }
 
@@ -232,6 +235,8 @@ public class Jeu {//classe principale sur fonctionnement du jeu dont le fonction
                     break;
             }
             plateau.display();
+            System.out.println();
+            System.out.println();
 
             if(isFinish(positionJoyau,joueurs[n])){
                 classements.add(joueurs[n].color);

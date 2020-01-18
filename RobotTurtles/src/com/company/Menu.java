@@ -20,7 +20,7 @@ public class Menu {      //Dans cette classe, on choisit le nombre de joueur et 
         fenetre.setTitle("RobotTurtles");
         fenetre.setSize(620, 802);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        fenetre.setLocation(dim.width / 4 - fenetre.getWidth() / 2, dim.height / 2 - fenetre.getHeight() / 2);
+        fenetre.setLocation(dim.width / 2 - fenetre.getWidth() / 2, dim.height / 2 - fenetre.getHeight() / 2);
         fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         fenetre.setResizable(false);
         JPanelBackround container = new JPanelBackround("images/MenuBackground.jpg");
@@ -47,6 +47,7 @@ public class Menu {      //Dans cette classe, on choisit le nombre de joueur et 
         public void actionPerformed(ActionEvent arg0) {
             fenetre.setVisible(false);
             Jeu jeu = new Jeu(2);
+            jeu.deroulement();
         }
     }
 
@@ -54,6 +55,7 @@ public class Menu {      //Dans cette classe, on choisit le nombre de joueur et 
         public void actionPerformed(ActionEvent e) {
             fenetre.setVisible(false);
             Jeu jeu = new Jeu(3);
+            jeu.deroulement();
 
         }
     }
@@ -62,6 +64,7 @@ public class Menu {      //Dans cette classe, on choisit le nombre de joueur et 
         public void actionPerformed(ActionEvent e) {
             fenetre.setVisible(false);
             Jeu jeu = new Jeu(4);
+            jeu.deroulement();
 
         }
     }
