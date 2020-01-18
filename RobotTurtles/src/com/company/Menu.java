@@ -1,37 +1,69 @@
 package com.company;
 
-import java.util.Scanner;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class Menu { //Dans cette classe, on choisit le nombre de joueur et quand on démarre le jeu
 
-
-    private int nbJoueurs ;
+public class Menu {      //Dans cette classe, on choisit le nombre de joueur et quand on démarre le jeu
+    private JButton bouton2Players = new JButton("2 joueurs");
+    private JButton bouton3Players = new JButton("3 joueurs");
+    private JButton bouton4Players = new JButton("4 joueurs");
+    private JFrame fenetre = new JFrame();
 
     public Menu(){
     }
 
-    public int getNbJoueurs(){
-        return nbJoueurs;
+    public void display() { //affiche le menu
+
+        fenetre.setTitle("RobotTurtles");
+        fenetre.setSize(620, 802);
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        fenetre.setLocation(dim.width / 4 - fenetre.getWidth() / 2, dim.height / 2 - fenetre.getHeight() / 2);
+        fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        fenetre.setResizable(false);
+        JPanelBackround container = new JPanelBackround("images/MenuBackground.jpg");
+        container.setLayout(null);
+
+
+        bouton2Players.setBounds(fenetre.getWidth() / 2 - 100, fenetre.getHeight() / 2      , 200, 50);
+        bouton3Players.setBounds(fenetre.getWidth() / 2 - 100, fenetre.getHeight() / 2 + 100, 200, 50);
+        bouton4Players.setBounds(fenetre.getWidth() / 2 - 100, fenetre.getHeight() / 2 + 200, 200, 50);
+
+        container.add(bouton2Players);
+        container.add(bouton3Players);
+        container.add(bouton4Players);
+
+        bouton2Players.addActionListener(new Bouton2Listener());
+        bouton3Players.addActionListener(new Bouton3Listener());
+        bouton4Players.addActionListener(new Bouton4Listener());
+
+        fenetre.setContentPane(container);
+        fenetre.setVisible(true);
     }
 
-
-    public void display(){ //affiche le menu
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Bonjour et bienvenue dans le jeu Robot Turtles ! \n" +
-                "\n" +
-                "Saississez le nombre de joueur (entre 2 et 4) : ");
-
-        int choix = scanner.nextInt();
-
-        while(choix != 2 & choix != 3 & choix != 4){ //detection des erreurs d'entrées utilisateur
-            System.out.println("Saissisez un nombre de joueur valide (entre 2 et 4) : ");
-            choix = scanner.nextInt();
+    class Bouton2Listener implements ActionListener {
+        public void actionPerformed(ActionEvent arg0) {
+            fenetre.setVisible(false);
+            Jeu jeu = new Jeu(2);
         }
+    }
 
-        Jeu jeu = new Jeu(choix);
-        jeu.deroulement();
+    class Bouton3Listener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            fenetre.setVisible(false);
+            Jeu jeu = new Jeu(3);
 
+        }
+    }
+
+    class Bouton4Listener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            fenetre.setVisible(false);
+            Jeu jeu = new Jeu(4);
+
+        }
     }
 
 }
