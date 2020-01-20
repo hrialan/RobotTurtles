@@ -210,9 +210,7 @@ public class Jeu {//classe principale sur fonctionnement du jeu dont le fonction
                         }
                         switch (choix){
                             case 5: // on enleve tout
-                                for (int i = 0; i < 5 ; i++) {
-                                    joueurs[n].getMain(i);//retire la carte d'indice i
-                                }
+                                joueurs[n].deleteMain();
                                 break;
 
                             default:

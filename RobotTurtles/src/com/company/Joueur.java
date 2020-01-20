@@ -27,7 +27,15 @@ public class Joueur extends Tortue{
 
     public Carte getLastCard(){return deck.getLastCard();}
     public void addInstructions(Carte carte){instructions.addLast(carte);};
-    public Carte getMain(int indice){return main.remove(indice);}
+    public Carte getMain(int indice){
+        return main.remove(indice);
+    }
+    public void deleteMain(){
+        for(int i = sizeMain()-1;i >= 0 ;i--) {
+            main.remove(i);
+        }
+    }
+
     public ArrayDeque<Carte> getInstructions(){return this.instructions;}
 
     public void printMain(){//sur une ligne
@@ -60,6 +68,9 @@ public class Joueur extends Tortue{
 
     public void remplirMain(){
         while(main.size()<5){
+            if(deck.getSize() == 0){
+                deck.create();
+            }
             main.add(deck.getLastCard());
         }
     }
