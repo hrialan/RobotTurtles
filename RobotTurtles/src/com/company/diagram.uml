@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="256.5" y="893.0">com.company.Joueur</node>
+    <node x="975.9000000000001" y="0.0">com.company.Menu</node>
+    <node x="666.9" y="1390.0">com.company.Jeu</node>
+    <node x="0.0" y="252.0">com.company.Obstacle</node>
+    <node x="623.04375" y="197.0">com.company.Plateau</node>
+    <node x="993.9000000000001" y="211.0">com.company.Main</node>
+    <node x="483.0" y="584.0">com.company.Tortue</node>
+    <node x="258.99999999999994" y="285.0">com.company.Deck</node>
+    <node x="290.1625" y="0.0">com.company.Carte</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.company.Deck" target="com.company.Carte">
+      <point x="0.0" y="-80.5" />
+      <point x="354.99999999999994" y="177.0" />
+      <point x="372.51250000000005" y="177.0" />
+      <point x="-9.149999999999977" y="58.5" />
+    </edge>
+    <edge source="com.company.Joueur" target="com.company.Obstacle">
+      <point x="-189.45000000000016" y="-223.5" />
+      <point x="277.54999999999984" y="873.0" />
+      <point x="108.66250000000002" y="873.0" />
+      <point x="108.66250000000002" y="564.0" />
+      <point x="59.75" y="564.0" />
+      <point x="-59.75" y="113.5" />
+    </edge>
+    <edge source="com.company.Plateau" target="com.company.Carte">
+      <point x="0.0" y="-168.5" />
+      <point x="759.54375" y="147.0" />
+      <point x="445.7125000000001" y="147.0" />
+      <point x="64.05000000000007" y="58.5" />
+    </edge>
+    <edge source="com.company.Obstacle" target="com.company.Carte">
+      <point x="0.0" y="-113.5" />
+      <point x="119.5" y="147.0" />
+      <point x="317.6125" y="147.0" />
+      <point x="-64.05000000000001" y="58.5" />
+    </edge>
+    <edge source="com.company.Joueur" target="com.company.Plateau">
+      <point x="189.45000000000005" y="-223.5" />
+      <point x="656.45" y="873.0" />
+      <point x="803.5" y="873.0" />
+      <point x="803.5" y="554.0" />
+      <point x="759.54375" y="554.0" />
+      <point x="0.0" y="168.5" />
+    </edge>
+    <edge source="com.company.Jeu" target="com.company.Joueur">
+      <point x="-52.799999999999955" y="-69.5" />
+      <point x="746.1" y="1360.0" />
+      <point x="572.25" y="1360.0" />
+      <point x="105.25" y="223.5" />
+    </edge>
+    <edge source="com.company.Joueur" target="com.company.Carte">
+      <point x="21.049999999999955" y="-223.5" />
+      <point x="488.04999999999995" y="873.0" />
+      <point x="472.49999999999994" y="873.0" />
+      <point x="472.49999999999994" y="157.0" />
+      <point x="427.4125000000001" y="157.0" />
+      <point x="45.75000000000006" y="58.5" />
+    </edge>
+    <edge source="com.company.Jeu" target="com.company.Carte">
+      <point x="105.60000000000002" y="-69.5" />
+      <point x="904.5" y="1370.0" />
+      <point x="906.54375" y="1370.0" />
+      <point x="906.54375" y="137.0" />
+      <point x="464.0125000000001" y="137.0" />
+      <point x="82.35000000000008" y="58.5" />
+    </edge>
+    <edge source="com.company.Tortue" target="com.company.Plateau">
+      <point x="0.0" y="-124.5" />
+      <point x="632.5" y="564.0" />
+      <point x="650.34375" y="564.0" />
+      <point x="-109.20000000000005" y="168.5" />
+    </edge>
+    <edge source="com.company.Jeu" target="com.company.Plateau">
+      <point x="52.799999999999955" y="-69.5" />
+      <point x="850.9625" y="564.0" />
+      <point x="868.74375" y="564.0" />
+      <point x="109.1999999999999" y="168.5" />
+    </edge>
+    <edge source="com.company.Main" target="com.company.Menu">
+      <point x="-41.5" y="-26.5" />
+      <point x="1035.4" y="186.0" />
+      <point x="1026.4" y="186.0" />
+      <point x="-50.5" y="80.5" />
+    </edge>
+    <edge source="com.company.Plateau" target="com.company.Joueur">
+      <point x="-54.60000000000002" y="168.5" />
+      <point x="704.94375" y="564.0" />
+      <point x="792.5" y="564.0" />
+      <point x="792.5" y="863.0" />
+      <point x="614.35" y="863.0" />
+      <point x="147.35000000000002" y="-223.5" />
+    </edge>
+    <edge source="com.company.Joueur" target="com.company.Tortue">
+      <point x="105.25" y="-223.5" />
+      <point x="572.25" y="853.0" />
+      <point x="707.25" y="853.0" />
+      <point x="74.75" y="124.5" />
+    </edge>
+    <edge source="com.company.Joueur" target="com.company.Deck">
+      <point x="-105.25000000000011" y="-223.5" />
+      <point x="361.7499999999999" y="873.0" />
+      <point x="344.1625" y="873.0" />
+      <point x="344.1625" y="564.0" />
+      <point x="306.99999999999994" y="564.0" />
+      <point x="-48.0" y="80.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.40000000000000013" x="678.5" y="250.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

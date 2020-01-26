@@ -204,6 +204,7 @@ public class Jeu {//classe principale sur fonctionnement du jeu dont le fonction
                     if(choix == 1){
                         System.out.println("Combien de cartes souhaitez vous defausser ? ");
                         choix = scanner.nextInt();
+
                         while (choix < 1 || choix > joueurs[n].sizeMain()){
                             System.out.println("Saisie incorrecte (entier entre 1 et " + joueurs[n].sizeMain() +") : ");
                             choix = scanner.nextInt();
