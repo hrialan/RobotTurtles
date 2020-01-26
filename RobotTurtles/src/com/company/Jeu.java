@@ -1,5 +1,6 @@
 package com.company;
 
+import netscape.security.UserTarget;
 import sun.jvm.hotspot.types.JBooleanField;
 
 import java.util.ArrayDeque;
@@ -113,7 +114,7 @@ public class Jeu {//classe principale sur fonctionnement du jeu dont le fonction
             System.out.println("voici ta main : ");
             joueurs[n].printMain();
             System.out.println();
-            System.out.println("Vous avez trois choix :"+ "\n"
+            System.out.println("Vous avez quatre choix :"+ "\n"
                     + "1 - complèter votre programme" +"\n"
                     + "2 - Construir un mur" + "\n"
                     + "3 - Executer votre programme " + "\n"
@@ -133,7 +134,7 @@ public class Jeu {//classe principale sur fonctionnement du jeu dont le fonction
                     System.out.println("\nCombien de cartes voulez vous ajouter à votre algorithme ? : (Violette = Droite / Jaune = Gauche)");
                     choix = scanner.nextInt();
                     while (choix<1 || choix>5){
-                        System.out.println("Choisissez un entier entre 1 et 5 : \n\n");
+                        System.out.println("Non, choisissez un entier entre 1 et 5 : ");
                         choix = scanner.nextInt();
                     }
 
@@ -150,6 +151,7 @@ public class Jeu {//classe principale sur fonctionnement du jeu dont le fonction
                         }
                         joueurs[n].addInstructions(joueurs[n].getMain(carte - 1));
                     }
+                    defausserMain(n,scanner,joueurs);
                     joueurs[n].remplirMain();
                     break;
 
@@ -194,43 +196,8 @@ public class Jeu {//classe principale sur fonctionnement du jeu dont le fonction
                     break;
 
                 case 4:// on passe le tour et on demande si on defausse
-                    System.out.println("\nSouhaitez vous defausser vos cartes ? (oui : 1 - non : 0)");
-                    choix = scanner.nextInt();
-                    while (choix<0 || choix>1){
-                        System.out.println("\nChoisissez soit 0 (non) soit 1 (oui) :  ");
-                        choix = scanner.nextInt();
-                    }
-
-                    if(choix == 1){
-                        System.out.println("Combien de cartes souhaitez vous defausser ? ");
-                        choix = scanner.nextInt();
-
-                        while (choix < 1 || choix > joueurs[n].sizeMain()){
-                            System.out.println("Saisie incorrecte (entier entre 1 et " + joueurs[n].sizeMain() +") : ");
-                            choix = scanner.nextInt();
-                        }
-                        switch (choix){
-                            case 5: // on enleve tout
-                                joueurs[n].deleteMain();
-                                break;
-
-                            default:
-                                for (int i = 0; i < choix ; i ++){
-                                    joueurs[n].showWellMain();
-                                    System.out.println();
-                                    System.out.println("Quelle carte voulez vous retirer ? ");
-                                    int indiceCarte= scanner.nextInt();
-                                    while (indiceCarte < 1 || indiceCarte > joueurs[n].sizeMain()){
-                                        System.out.println();
-                                        System.out.println("Saisie incorrecte (entier entre 1 et " + joueurs[n].sizeMain() +") : ");
-                                        indiceCarte = scanner.nextInt();
-                                    }
-                                    joueurs[n].getMain(indiceCarte - 1);
-                                }
-                                break;
-                        }
-                        joueurs[n].remplirMain();
-                    }
+                    defausserMain(n,scanner,joueurs);
+                    joueurs[n].remplirMain();
                     break;
             }
             plateau.display();
@@ -254,6 +221,41 @@ public class Jeu {//classe principale sur fonctionnement du jeu dont le fonction
     }
 
 
+    public void defausserMain(int n, Scanner scanner, Joueur[] joueurs){
+        System.out.println("\nSouhaitez vous defausser vos cartes ? (oui : 1 - non : 0)");
+        int choix = scanner.nextInt();
+        while (choix<0 || choix>1){
+            System.out.println("\nChoisissez soit 0 (non) soit 1 (oui) :  ");
+            choix = scanner.nextInt();
+        }
+
+        if(choix == 1){
+            System.out.println("Combien de cartes souhaitez vous defausser ? ");
+            choix = scanner.nextInt();
+
+            while (choix < 1 || choix > joueurs[n].sizeMain()){
+                System.out.println("Saisie incorrecte (entier entre 1 et " + joueurs[n].sizeMain() +") : ");
+                choix = scanner.nextInt();
+            }
+            if(choix == joueurs[n].sizeMain()){
+                joueurs[n].deleteMain();
+            }
+            else {
+                for (int i = 0; i < choix ; i ++){
+                    joueurs[n].showWellMain();
+                    System.out.println();
+                    System.out.println("Quelle carte voulez vous retirer ? ");
+                    int indiceCarte= scanner.nextInt();
+                    while (indiceCarte < 1 || indiceCarte > joueurs[n].sizeMain()){
+                        System.out.println();
+                        System.out.println("Saisie incorrecte (entier entre 1 et " + joueurs[n].sizeMain() +") : ");
+                        indiceCarte = scanner.nextInt();
+                    }
+                    joueurs[n].getMain(indiceCarte - 1);
+                }
+            }
+        }
+    }
 
     public boolean isFinish(int[][] positionJoyau, Joueur joueur){
         for(int[] elt : positionJoyau){
