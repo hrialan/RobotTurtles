@@ -230,7 +230,9 @@ public class Jeu {//classe principale sur fonctionnement du jeu dont le fonction
         }
 
         if(choix == 1){
-            System.out.println("Combien de cartes souhaitez vous defausser ? ");
+            System.out.println("\nMain : ");
+            joueurs[n].showWellMain();
+            System.out.println("\nCombien de cartes souhaitez vous defausser ? ");
             choix = scanner.nextInt();
 
             while (choix < 1 || choix > joueurs[n].sizeMain()){
@@ -242,6 +244,7 @@ public class Jeu {//classe principale sur fonctionnement du jeu dont le fonction
             }
             else {
                 for (int i = 0; i < choix ; i ++){
+                    System.out.println();
                     joueurs[n].showWellMain();
                     System.out.println();
                     System.out.println("Quelle carte voulez vous retirer ? ");
