@@ -54,6 +54,24 @@ public class Plateau {
             plateau[0][1] = "TRS";
             plateau[0][5] = "TVS";
         }
+        else if(nbJoueur == 3){
+            plateau[7][0] = "RUBY";
+            plateau[7][3] = "RUBY";
+            plateau[7][6] = "RUBY";
+            plateau[0][0] = "TRS";
+            plateau[0][3] = "TVS";
+            plateau[0][6] = "TOS";
+        }
+        else {
+
+            plateau[7][1] = "RUBY";
+            plateau[7][6] = "RUBY";
+
+            plateau[0][0] = "TRS";
+            plateau[0][3] = "TVS";
+            plateau[0][6] = "TOS";
+            plateau[0][6] = "TBS";
+        }
     }
 
     public void set(Joueur joueur){
